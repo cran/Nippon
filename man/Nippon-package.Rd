@@ -11,8 +11,8 @@ may be useful for Japanese R users.
 \tabular{ll}{
 Package: \tab Nippon\cr
 Type: \tab Package\cr
-Version: \tab 0.1.3\cr
-Date: \tab 2011-02-18\cr
+Version: \tab 0.2\cr
+Date: \tab 2011-02-19\cr
 License: \tab GPL (>=2)\cr
 LazyLoad: \tab yes\cr
 }

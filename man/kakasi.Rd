@@ -53,7 +53,9 @@ http://rmecab.jp/wiki/.
 % }
 \examples{
 \dontrun{
-data(regions)
+library(Nippon)
+data(prefectures)
+regions <- unique(prefectures$region)
 regions
 kakasi(regions)
 }

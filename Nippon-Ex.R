@@ -5,6 +5,43 @@ library('Nippon')
 
 assign(".oldSearch", search(), pos = 'CheckExEnv')
 cleanEx()
+nameEx("JapaneseColors")
+### * JapaneseColors
+
+flush(stderr()); flush(stdout())
+
+### Name: JapaneseColors
+### Title: Find RGB by Japanese color names
+### Aliases: JapaneseColors
+### Keywords: Japanese color
+
+### ** Examples
+
+JapaneseColors(c("sangoiro","kuriiro"))
+
+
+
+cleanEx()
+nameEx("jyear")
+### * jyear
+
+flush(stderr()); flush(stdout())
+
+### Name: jyear
+### Title: Convert Japanese year style
+### Aliases: jyear
+### Keywords: Japanese manip
+
+### ** Examples
+
+jyear(2000,ascii=TRUE)
+jyear(2000,withAD=TRUE,ascii=TRUE)
+jyear(1989,ascii=TRUE)
+jyear(1989,shift=TRUE,ascii=TRUE)
+
+
+
+cleanEx()
 nameEx("kakasi")
 ### * kakasi
 
@@ -18,7 +55,9 @@ flush(stderr()); flush(stdout())
 ### ** Examples
 
 ## Not run: 
-##D data(regions)
+##D library(Nippon)
+##D data(prefectures)
+##D regions <- unique(prefectures$region)
 ##D regions
 ##D kakasi(regions)
 ## End(Not run)
@@ -26,38 +65,67 @@ flush(stderr()); flush(stdout())
 
 
 cleanEx()
-nameEx("month.jp")
-### * month.jp
+nameEx("month.name.jp")
+### * month.name.jp
 
 flush(stderr()); flush(stdout())
 
-### Name: month.jp
-### Title: Japanese months
-### Aliases: month.jp
+### Name: month.name.jp
+### Title: The Japanese name of months
+### Aliases: month.name.jp
 ### Keywords: datasets
 
 ### ** Examples
 
-data(month.jp)
-month.jp[1:3]
+data(month.name.jp)
+month.name.jp[which(month.name=="April")]
 
 
 
 cleanEx()
-nameEx("regions")
-### * regions
+nameEx("nippon.palette")
+### * nippon.palette
 
 flush(stderr()); flush(stdout())
 
-### Name: regions
-### Title: Japan regions
-### Aliases: regions
+### Name: nippon.palette
+### Title: Switch the color palette to JIS colors
+### Aliases: nippon.palette
+### Keywords: Japanese color
+
+### ** Examples
+
+op <- par(mfrow=c(1,2))
+palette("default")
+n <- print(palette())
+pie(rep(1,8),col=1:8,label=n)
+nippon.palette()
+pie(rep(1,8),col=1:8,label=n)
+palette("default")
+par(op)
+
+
+
+graphics::par(get("par.postscript", pos = 'CheckExEnv'))
+cleanEx()
+nameEx("prefectures")
+### * prefectures
+
+flush(stderr()); flush(stdout())
+
+### Name: prefectures
+### Title: Prefectural names in Japan
+### Aliases: prefectures
 ### Keywords: datasets
 
 ### ** Examples
 
-data(regions)
-regions
+data(prefectures)
+head(prefectures)
+## Not run: 
+##D ## Obtain the name as Romaji (ASCII)
+##D kakasi(head(prefecture$name))
+## End(Not run)
 
 
 

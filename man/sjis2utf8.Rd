@@ -44,7 +44,7 @@ partifular, when importing an old dataset or from the different platform.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{iconv}}, \code{\link{Encoding}}
+\code{\link{iconv}}, \code{\link{localeToCharset}}
 }
 \examples{
 x <- iconv(zenkaku$upper, from="UTF-8", to="CP932")

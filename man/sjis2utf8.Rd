@@ -44,8 +44,11 @@ partifular, when importing an old dataset or from the different platform.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{iconv}}, \code{\link{localeToCharset}}
+	\code{\link[base]{iconv}} and \code{\link[utils]{localeToCharset}}.
 }
+
+
+
 \examples{
 x <- iconv(zenkaku$upper, from="UTF-8", to="CP932")
 sjis2utf8(x)

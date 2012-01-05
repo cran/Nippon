@@ -1,0 +1,16 @@
+2012-01-05 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.2.1
+	* Renewed DESCRIPTION
+	* Fixed prefectures.rda
+	* Fixed sjis2utf8.Rd, jyear.Rd, and Nippon-package.Rd
+2011-02-21 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.2
+	* Added Janapese translation as R-Nippon.pot, R-jp.po, R-Nippon.mo
+	* Added jyear() as jyear.R, jyear.Rd
+	* Added JapaneseColors() as jiscolor.R, and JapaneseColors.Rd
+	* Added nippon.palette() as jiscolor.R, and nippon.palette.Rd
+	* Changed month.jp to month.name.jp and remove month.jp.Rd
+	* Added new data: jiscolors.rda, prefectures.rda
+	* regions was integrated to prefectures, and removed regions.Rd
+2011-02-18 Susumu Tanimura <aruminat@gmail.com>
+	* Initial release. version 0.1.3

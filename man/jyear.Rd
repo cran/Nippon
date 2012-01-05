@@ -58,7 +58,7 @@ following period.
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{\code{\link[epicalc:be2ad]{be2ad}}}
+\seealso{\code{\link[epicalc]{be2ad}}}
 \examples{
 jyear(2000,ascii=TRUE)
 jyear(2000,withAD=TRUE,ascii=TRUE)

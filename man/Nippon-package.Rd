@@ -11,10 +11,9 @@ may be useful for Japanese R users.
 \tabular{ll}{
 Package: \tab Nippon\cr
 Type: \tab Package\cr
-Version: \tab 0.2\cr
-Date: \tab 2011-02-19\cr
+Version: \tab 0.2.2\cr
+Date: \tab 2012-01-05\cr
 License: \tab GPL (>=2)\cr
-LazyLoad: \tab yes\cr
 }
 To avoid troubles with Japanese strings, non-ASCII Japanese characters
 in R object is sanitized or converted into ASCII characters by utility

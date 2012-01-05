@@ -45,9 +45,8 @@ Susumu Tanimura \email{aruminat@gmail.com}
 % %%  ~~further notes~~
 % }
 %% ~Make other sections like Warning with \section{Warning }{....} ~
-% \seealso{
-% %% ~~objects to See Also as \code{\link{help}}, ~~~
-% }
+\seealso{\code{\link[tools:showNonASCII]{showNonASCII}}}
+
 \examples{
 zenkaku
 zen2han(zenkaku)

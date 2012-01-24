@@ -1,0 +1,530 @@
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of KAKASI</TITLE>
+</HEAD><BODY>
+<H1>KAKASI</H1>
+Section: User Commands  (1)<BR>Updated: LOCAL<BR><A HREF="#index">Index</A>
+<A HREF="/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+KAKASI - Kanji kana simple inverter (between Kanji, both Kana and Romaji)
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>kakasi [options] [jisyo1 [jisyo2 [jisyo1,,]]]</B>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<I>KAKASI</I>
+
+In Japanese sentences are often made up a mixture of Chinese
+characters (Kanji), Kana (Hiragana and Katakana) and Romaji (Latin 
+phonetical pronunciation).  This program converts between these four
+different ways of writing Japanese.
+<P>
+This program is useful for those whose terminal or desktop does not
+support the native display of Japanese.  Also this is a great tool
+for those who are learning Japanese (international students and 
+children etc).
+<P>
+A word can be passed into the standard input (stdin), then it is
+translated and output to standard out (stdout).  In the following
+example the &quot;bunchu&quot; Kanji is converted into Hiragana.
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT><DD>
+
+kakasi -JH &lt; document
+</DL>
+<P>
+
+Since version 2.3.0 text with spaces in-between words has been supported.
+In the following example the output has spaces in-between each word.
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT><DD>
+
+kakasi -w &lt; document
+</DL>
+<P>
+
+Since version 2.3.5 level conversion mode has been supported.
+In the following example, simple Kanjis are left them unconverted,
+and difficult Kanjis are translated into Hiragana.
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT><DD>
+
+kakasi -l4 &lt; document
+</DL>
+<P>
+
+<I>KAKASI</I>
+
+It is possible to convert letters to alphabetical characters.  Also
+Katakana letters in the JIS x0201 character set and the Hiragana in
+the JIS x0208 character set can be converted between each other.
+<P>
+
+<I>KAKASI</I>
+
+The following character set in brackets which is displayed.
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>ASCII (a)<DD>
+
+Known as &quot;ascii&quot; character set.
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>JISROMAN (j)<DD>
+
+Known as &quot;jis roman&quot; character set.
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>GRAPHIC (g)<DD>
+
+It is the DEC graphic character set.
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>Katakana (k)<DD>
+
+<BR>
+
+JIS x0201, defined as part of the GR character set.
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT><DD>
+
+As a matter of convinience, JIS x0208 is divided as stated below.
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>Kanji (J)<DD>
+
+<BR>
+
+JIS x0208 characters included between 16 and 94 sections.
+
+<BR>
+
+
+
+
+<DT>Hiragana (H)<DD>
+
+<BR>
+
+JIS x0208 characters included in section 4 (Hiragana)
+
+<BR>
+
+
+
+
+<DT>Katakana (K)<DD>
+
+<BR>
+
+JIS x0208 characters included in section 5 (Katakana)
+
+<BR>
+
+
+
+
+<DT>Sign (E)<DD>
+
+<BR>
+
+JIS x0208 characters included in section 1,2,3,6,7, and 8.
+(Note that section 9-15 are undefined in JIS x0208.)
+</DL>
+<P>
+
+Translation between the following character sets are available.
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>ASCII<DD>
+
+-&gt; JISROMAN, Sign
+
+<BR>
+
+
+
+
+<DT>JISROMAN<DD>
+
+-&gt; ASCII, Sign
+
+<BR>
+
+
+
+
+<DT>GRAPHIC<DD>
+
+-&gt; ASCII, JISROMAN, Sign
+
+<BR>
+
+
+
+
+<DT>JISx0201 Katakana<DD>
+
+-&gt; ASCII, JISROMAN, Kana, Hiragana
+
+<BR>
+
+
+
+
+<DT>Sign<DD>
+
+-&gt; ASCII, JISROMAN
+
+<BR>
+
+
+
+
+<DT>Katakana<DD>
+
+-&gt; ASCII, JISROMAN, JISx0201 Katakana, Hiragana
+
+<BR>
+
+
+
+
+<DT>Hiragana<DD>
+
+-&gt; ASCII, JISROMAN, JISx0201 Katakana, Kana
+
+<BR>
+
+
+
+
+<DT>Kanji<DD>
+
+-&gt; ASCII, JISROMAN, JISx0201 Katakana, Kana, Hiragana
+</DL>
+<P>
+
+With conversion of ASCII and the JISROMAN the alphabetical character conversion
+is done from JISx0201 Katakana, Katakana, Hiragana and Kanji.
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>Example:<DD>
+
+<P>
+1. All kanji characters are converted to Hiragana.
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;kakasi&nbsp;-JH&nbsp;
+<P>
+2. All JIS x0208 characters are converted to JIS X 0201.
+<P>
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;kakasi&nbsp;-Hk&nbsp;-Kk&nbsp;-Jk&nbsp;-Ea
+<P>
+3. All characters are converted to JIS X 0208.
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;kakasi&nbsp;-aE&nbsp;-jE&nbsp;-gE&nbsp;-kK
+<P>
+4. All characters are converted to ascii and words are separated.
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;kakasi&nbsp;-Ha&nbsp;-Ka&nbsp;-Ja&nbsp;-Ea&nbsp;-ka
+<P>
+5. Exchange between Katakana and Hiragana characters.
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;kakasi&nbsp;-HK&nbsp;-KH
+</DL>
+<P>
+
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>CONVERSION DESIGNATED CHARACTER SET</H2>
+
+<P>
+Some character sets are categorized by kakasi and indicated by
+following mnemonics: a, j, g, k, E, H, K, J.
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;---&nbsp;ASCII&nbsp;characters
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j&nbsp;---&nbsp;JIS&nbsp;ROMAN&nbsp;(&nbsp;nearly&nbsp;equal&nbsp;to&nbsp;ASCII,&nbsp;&quot;~&quot;&nbsp;and&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different&nbsp;)&nbsp;defined&nbsp;by&nbsp;JIS&nbsp;x0201
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g&nbsp;---&nbsp;DEC&nbsp;Graphic&nbsp;Characters
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k&nbsp;---&nbsp;KATAKANA&nbsp;defined&nbsp;by&nbsp;JIS&nbsp;x0201
+<P>
+E, H, K, and J are included in JIS x0208 character set.
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;J&nbsp;---&nbsp;KANJI&nbsp;characters&nbsp;of&nbsp;JIS&nbsp;x0208.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H&nbsp;---&nbsp;HIRAGANA&nbsp;characters&nbsp;of&nbsp;JIS&nbsp;x0208.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K&nbsp;---&nbsp;KATAKANA&nbsp;characters&nbsp;of&nbsp;JIS&nbsp;x0208.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E&nbsp;---&nbsp;Rest&nbsp;of&nbsp;above&nbsp;characters&nbsp;of&nbsp;JIS&nbsp;x0208&nbsp;which&nbsp;includes
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alphabets,&nbsp;numbers,&nbsp;symbols&nbsp;and&nbsp;so&nbsp;on.
+<P>
+-(from)(to) means conversion from character set (from) to (to).
+For example, -JK option causes KANJI characters are converted
+to HIRAGANA. Combinations in the following table are available.
+(You must not remember it, because the -h shows same information)
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toom|&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;j&nbsp;&nbsp;&nbsp;&nbsp;k&nbsp;&nbsp;&nbsp;&nbsp;E&nbsp;&nbsp;&nbsp;&nbsp;H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K&nbsp;&nbsp;&nbsp;&nbsp;J&nbsp;&nbsp;&nbsp;&nbsp;g
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------+--------------------------------------------
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;o1&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;o1&nbsp;&nbsp;&nbsp;&nbsp;o1&nbsp;&nbsp;&nbsp;o12&nbsp;&nbsp;o
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;o1&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;o1&nbsp;&nbsp;&nbsp;&nbsp;o1&nbsp;&nbsp;&nbsp;o12&nbsp;&nbsp;o
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;o2
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;o2
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;--&nbsp;converted.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;--&nbsp;converted&nbsp;to&nbsp;Romaji.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;--&nbsp;Kanji&nbsp;-&gt;&nbsp;Kana&nbsp;conversion.
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>KANJI CODING CONVERSION</H2>
+
+Unfortunately, several coding systems are used in Japan and JIS
+x0208 standard are changed at 1983. Therefore, KAKASI can
+automatically distinguish the coding system and coding revision
+and then use the same output coding system if the document does
+not include JIS x0201 KATAKANA.  If JIS x0201 KATAKANA is
+included or you wish to change kanji coding system, you may
+use the next options.
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-i&nbsp;:&nbsp;input&nbsp;coding
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-o&nbsp;:&nbsp;output&nbsp;coding
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jis&nbsp;--&nbsp;Widely&nbsp;used&nbsp;on&nbsp;the&nbsp;internet.&nbsp;(Ex:&nbsp;fj,&nbsp;jp,&nbsp;..&nbsp;newsgroups)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Derived&nbsp;from&nbsp;ISO-2022&nbsp;coding&nbsp;manner.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newjis:&nbsp;JISx0208&nbsp;(1983)&nbsp;invoked&nbsp;by&nbsp;ESC-$-B.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oldjis:&nbsp;JISx0208&nbsp;(1978)&nbsp;invoked&nbsp;by&nbsp;ESC-$-@.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;euc,dec&nbsp;--&nbsp;Often&nbsp;used&nbsp;in&nbsp;UNIX&nbsp;like&nbsp;computers.&nbsp;JISx0208&nbsp;is
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assigned&nbsp;to&nbsp;GR&nbsp;(&nbsp;MSB&nbsp;is&nbsp;1&nbsp;).&nbsp;The&nbsp;major&nbsp;difference&nbsp;between
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;euc&nbsp;and&nbsp;dec&nbsp;is&nbsp;assignment&nbsp;of&nbsp;JISx0201&nbsp;KATAKANA&nbsp;and
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;DEC&nbsp;graphic&nbsp;character.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sjis&nbsp;--&nbsp;Defined&nbsp;by&nbsp;Microsoft&nbsp;Corp.&nbsp;Widely&nbsp;used&nbsp;on&nbsp;the&nbsp;personal
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;computers&nbsp;(&nbsp;MSDOS,&nbsp;Mac,&nbsp;..&nbsp;)
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>ROMAJI CONVERSION</H2>
+
+Kanji kana conversion options. Used with -J? option.
+There are 2 types of Romaji writing.  The first is the Kunrei
+method defined by Japanese government, and the second is the
+Hepburn method.  I think Hepburn method sounds naturally to
+foreigners.
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-rhepburn&nbsp;:&nbsp;Hepburn&nbsp;Method&nbsp;(default)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-rkunrei&nbsp;&nbsp;:&nbsp;Kunrei&nbsp;Method
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>OTHER OPTIONS</H2>
+
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-p:&nbsp;List&nbsp;all&nbsp;possible&nbsp;readings.&nbsp;If&nbsp;there&nbsp;exist&nbsp;two&nbsp;or&nbsp;more
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;possible&nbsp;readings,&nbsp;KAKASI&nbsp;shows&nbsp;them&nbsp;in&nbsp;braces&nbsp;{aaa,bbb}.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-s:&nbsp;Insert&nbsp;a&nbsp;separate&nbsp;character&nbsp;between&nbsp;words.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-f:&nbsp;Furigana&nbsp;mode.&nbsp;Shows&nbsp;the&nbsp;original&nbsp;kanji&nbsp;word&nbsp;with&nbsp;reading.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-c:&nbsp;Skip&nbsp;characters&nbsp;within&nbsp;word.&nbsp;(&nbsp;default&nbsp;TAB&nbsp;CR&nbsp;LF&nbsp;BLANK&nbsp;)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-C:&nbsp;Capitalize&nbsp;Romaji&nbsp;word&nbsp;(with&nbsp;-Ja&nbsp;or&nbsp;-Jj&nbsp;option)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-U:&nbsp;Upcase&nbsp;romaji&nbsp;word&nbsp;(with&nbsp;-Ja&nbsp;or&nbsp;-Jj&nbsp;option)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-u:&nbsp;Call&nbsp;fflush().
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-w:&nbsp;wakatigaki&nbsp;mode.&nbsp;'wakatigaki'&nbsp;is&nbsp;word&nbsp;segmentation&nbsp;for
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese&nbsp;sentences.
+<P>
+<P>
+<A NAME="lbAI">&nbsp;</A>
+<H2>DICTIONARIES</H2>
+
+<I>KAKASI</I>
+
+can accept additional dictionary to the system dictionary.
+The acceptable format of additional dictionary is
+<I>SKK</I>
+
+format, and
+<I>Wnn</I>
+
+format, and so on.
+Namely, each record is one line with two fields, Yomi (reading) and 
+Jukugo(idiom).  Fields are separated with commas (or TAB, or blank).
+The kanji code is restricted to JIS or EUC.
+See another document named JISYO for more details.
+<A NAME="lbAJ">&nbsp;</A>
+<H2>ENVIRONMENT VARIABLES</H2>
+
+The behavior is affected by the following environment variables.
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>KANWADICTPATH<DD>
+
+Specifies a path of kanwadict (full-path including filename).
+Default value is $prefix/share/kakasi/kanwadict.
+
+<BR>
+
+
+
+
+<DT>ITAIJIDICTPATH<DD>
+
+Specifies a path of itaijidict (full-path including filename).
+Default value is $prefix/share/kakasi/itaijidict.
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+Hironobu Takahasi &lt;<A HREF="mailto:takahasi@tiny.or.jp">takahasi@tiny.or.jp</A>&gt;
+<A NAME="lbAL">&nbsp;</A>
+<H2>FILES</H2>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>$prefix/share/kakasi/kanwadict<DD>
+
+It is a binary dictionary of 
+<I>KAKASI.</I>
+
+It is automatically converted from kakasidict by mkkanwa
+when the package is installed.
+</DL>
+<A NAME="lbAM">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<A HREF="/cgi-bin/man/man2html?1+mkkanwa">mkkanwa</A>(1)
+<A NAME="lbAN">&nbsp;</A>
+<H2>DIAGNOSTICS</H2>
+
+Return status except 0 when there is any trouble.
+<A NAME="lbAO">&nbsp;</A>
+<H2>BUGS</H2>
+
+Report bugs to KAKASI Project &lt;<A HREF="mailto:kakasi-dev@namazu.org">kakasi-dev@namazu.org</A>&gt;.
+Please DO NOT CONTACT to the originator (Takahasi-san).
+<A NAME="lbAP">&nbsp;</A>
+<H2>NOTE ABOUT ENGLISH MANUAL</H2>
+
+The content of English manual is not exactly same as that of Japanese manual.
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">CONVERSION DESIGNATED CHARACTER SET</A><DD>
+<DT><A HREF="#lbAF">KANJI CODING CONVERSION</A><DD>
+<DT><A HREF="#lbAG">ROMAJI CONVERSION</A><DD>
+<DT><A HREF="#lbAH">OTHER OPTIONS</A><DD>
+<DT><A HREF="#lbAI">DICTIONARIES</A><DD>
+<DT><A HREF="#lbAJ">ENVIRONMENT VARIABLES</A><DD>
+<DT><A HREF="#lbAK">AUTHOR</A><DD>
+<DT><A HREF="#lbAL">FILES</A><DD>
+<DT><A HREF="#lbAM">SEE ALSO</A><DD>
+<DT><A HREF="#lbAN">DIAGNOSTICS</A><DD>
+<DT><A HREF="#lbAO">BUGS</A><DD>
+<DT><A HREF="#lbAP">NOTE ABOUT ENGLISH MANUAL</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 11:21:28 GMT, January 23, 2013
+</BODY>
+</HTML>

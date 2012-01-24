@@ -28,9 +28,9 @@ nameEx("jyear")
 flush(stderr()); flush(stdout())
 
 ### Name: jyear
-### Title: Convert Japanese year style
+### Title: Conversion to Japanese year style
 ### Aliases: jyear
-### Keywords: Japanese manip
+### Keywords: Japanese language
 
 ### ** Examples
 
@@ -49,8 +49,8 @@ flush(stderr()); flush(stdout())
 
 ### Name: kakasi
 ### Title: Interface to kakasi
-### Aliases: kakasi
-### Keywords: Japanese character
+### Aliases: kakasi Sys.kakasi
+### Keywords: Japanese language character
 
 ### ** Examples
 
@@ -61,6 +61,28 @@ flush(stderr()); flush(stdout())
 ##D regions
 ##D kakasi(regions)
 ## End(Not run)
+
+
+
+cleanEx()
+nameEx("kata2hira")
+### * kata2hira
+
+flush(stderr()); flush(stdout())
+
+### Name: kata2hira
+### Title: Conversion form Katakana to Hiragana
+### Aliases: kata2hira hira2kata hiragana katakana ya.hira2kata
+###   ya.kata2hira
+### Keywords: Japanese language character
+
+### ** Examples
+
+	library(Nippon)
+	(kata <- katakana()[26:30])
+	kata2hira(kata)
+	(hira <- hiragana()[21:25])
+	hira2kata(hira)
 
 
 
@@ -116,7 +138,7 @@ flush(stderr()); flush(stdout())
 ### Name: prefectures
 ### Title: Prefectural names in Japan
 ### Aliases: prefectures
-### Keywords: datasets
+### Keywords: datasets Japan
 
 ### ** Examples
 
@@ -130,6 +152,25 @@ head(prefectures)
 
 
 cleanEx()
+nameEx("romanization")
+### * romanization
+
+flush(stderr()); flush(stdout())
+
+### Name: romanization
+### Title: Romanization of Japanese
+### Aliases: kana2roma .syllabicate.hira
+### Keywords: Japanese language character
+
+### ** Examples
+
+	library(Nippon)
+	jpn <- c(hiragana()[21:25], katakana()[26:30])
+	kana2roma(jpn)
+
+
+
+cleanEx()
 nameEx("sjis2utf8")
 ### * sjis2utf8
 
@@ -138,7 +179,7 @@ flush(stderr()); flush(stdout())
 ### Name: sjis2utf8
 ### Title: Wrapper of iconv for Japanese encoding
 ### Aliases: sjis2utf8 eucjp2utf8 jis2utf8
-### Keywords: character Japanese
+### Keywords: character Japanese language
 
 ### ** Examples
 
@@ -157,7 +198,7 @@ flush(stderr()); flush(stdout())
 ### Title: Convert Japanese characters from fullwidth (zenkaku) to
 ###   halfwidth (hankaku) forms
 ### Aliases: zen2han
-### Keywords: character Japanese
+### Keywords: character Japanese language
 
 ### ** Examples
 

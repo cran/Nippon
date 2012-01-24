@@ -1,0 +1,7 @@
+rm -f src/*.o
+rm -f src/Nippon.dll
+rm -f src/kakasi/*.o
+rm -f src/kakasi/*.a
+
+
+

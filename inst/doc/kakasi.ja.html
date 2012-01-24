@@ -1,0 +1,1013 @@
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<HTML><HEAD><TITLE>Man page of KAKASI</TITLE>
+</HEAD><BODY>
+<H1>KAKASI</H1>
+Section: User Commands  (1)<BR>Updated: LOCAL<BR><A HREF="#index">Index</A>
+<A HREF="/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+KAKASI - Kanji kana simple inverter (漢字かな読み上げ)
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>kakasi [options] [jisyo1 [jisyo2 [jisyo1,,]]]</B>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<I>KAKASI</I>
+
+は漢字かな混じり文をかなだけの文やローマ字表記に変換することを
+目的として作られました。
+漢字の読めない端末を使った時や、
+漢字に不慣れな外国人や子供に文章を紹介したい時などに使えるかもしれません。
+標準入力から日本語の文章を入力すると、
+指定された文字セットに変換されて出力されます。 
+<P>
+
+例えば次の例では文中の漢字がひらがなに変換されます。
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT><DD>
+
+kakasi -JH &lt; document
+</DL>
+<P>
+
+バージョン 2.3.0 からは、分かち書き機能が追加されました。
+例えば次の例では、日本語文が分かち書きされて出力されます。
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT><DD>
+
+kakasi -w &lt; document
+</DL>
+<P>
+
+バージョン 2.3.5 からは、学年別ひらがな変換機能が追加されました。
+例えば次の例では、小学4年生までに習った漢字は漢字のまま表示し、
+それ以外の難しい漢字はひらがなに開いて出力されます。
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT><DD>
+
+kakasi -l4 &lt; document
+</DL>
+<P>
+
+<I>KAKASI</I>
+
+は文字をローマ字に変換したり、
+JIS x0201
+のかたかな文字や、
+JIS x0208
+のひらがな、
+かたかなの間で相互に変換できます。
+<I>KAKASI</I>
+
+では文字セットとして次のものを理解します。
+(カッコの中は
+<I>KAKASI</I>
+
+のオプションとして指定する文字を表します。)
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>ASCII (a)<DD>
+
+いわゆる ascii です。'〜', '＼' が含まれています。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>JISROMAN (j)<DD>
+
+いわゆる jis roman です。'‾' , '¥' が含まれています。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>GRAPHIC (g)<DD>
+
+これについては正しい名称を知りません。
+DEC 社の端末で表示される罫線などがこの文字セットに含まれます。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>かたかな (k)<DD>
+
+<BR>
+
+JIS x0201 で定義されている文字セットのうち GR の部分です。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT><DD>
+
+以下は JIS x0208 を便宜上分割したものです。規格上は全体で一つの文字セットです。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>漢字 (J)<DD>
+
+<BR>
+
+16 区以降の `亜' に続く文字です。
+
+<BR>
+
+
+
+
+<DT>ひらがな (H)<DD>
+
+<BR>
+
+4 区にあるひらがなです。
+
+<BR>
+
+
+
+
+<DT>かたかな (K)<DD>
+
+<BR>
+
+5 区にあるかたかなです。
+ひらがなと 1 区ずれただけでなく、独自の個性が発揮されているものです。
+
+<BR>
+
+
+
+
+<DT>記号 (E)<DD>
+
+<BR>
+
+上記以外の文字です。
+</DL>
+<P>
+
+次の文字セット間の変換が指定できます。
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>ASCII<DD>
+
+-&gt; JISROMAN, 記号
+
+<BR>
+
+
+
+
+<DT>JISROMAN<DD>
+
+-&gt; ASCII, 記号
+
+<BR>
+
+
+
+
+<DT>GRAPHIC<DD>
+
+-&gt; ASCII, JISROMAN, 記号
+
+<BR>
+
+
+
+
+<DT>JISx0201のかたかな<DD>
+
+-&gt; ASCII, JISROMAN, カナ, ひらがな
+
+<BR>
+
+
+
+
+<DT>記号<DD>
+
+-&gt; ASCII, JISROMAN
+
+<BR>
+
+
+
+
+<DT>かたかな<DD>
+
+-&gt; ASCII, JISROMAN, JISx0201のかたかな, ひらがな
+
+<BR>
+
+
+
+
+<DT>ひらがな<DD>
+
+-&gt; ASCII, JISROMAN, JISx0201のかたかな, カナ
+
+<BR>
+
+
+
+
+<DT>漢字<DD>
+
+-&gt; ASCII, JISROMAN, JISx0201のかたかな, カナ, ひらがな
+</DL>
+<P>
+
+漢字からの変換では読み上げによって変換します。
+JISx0201かたかな、かたかな、ひらがな、漢字から ASCII と JISROMAN への
+変換ではローマ字変換を行います。
+<P>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>文字セットの変換指定オプション</H2>
+
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-a[jE]<DD>
+
+<B>E</B>
+
+が指定されると JISx0208 の記号への変換になります。
+それ以外のコードが指定されるか, 引数がないと変換しません。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-j[aE]<DD>
+
+<B>E</B>
+
+が指定されると JISx0208 の記号への変換になります。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-g[ajE]<DD>
+
+ちょっと無理があります。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-k[ajKH]<DD>
+
+<B>aj</B>
+
+を指定するとローマ字に変換します。
+<B>KH</B>
+
+では JISx0208 のかたかなやひらがなに変換します。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-E[aj]<DD>
+
+JISx0208 の記号を ASCII または JIS ROMAN にします。
+現在のバージョンではそのほとんどが手抜き工事になっています。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-H[ajkK]<DD>
+
+<B>aj</B>
+
+を指定するとローマ字に変換します。
+<B>k</B>
+
+ではJISx0201のかたかなに、
+<B>K</B>
+
+ではかたかなに変換します。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-K[ajkH]<DD>
+
+<B>aj</B>
+
+を指定するとローマ字に変換します。
+<B>k</B>
+
+ではJISx0201のかたかなに、
+<B>H</B>
+
+ではひらがなに変換します。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-J[ajkHK]<DD>
+
+まず辞書を引いて読み上げ、
+<B>aj</B>
+
+が指定されるとローマ字に変換します。
+<B>k</B>
+
+ではJISx0201のかたかなに、
+<B>H</B>
+
+ではひらがなに、
+<B>K</B>
+
+ではかたかなに変換します。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>Example:<DD>
+
+<P>
+1. 漢字をひらがなに読み上げる
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;kakasi&nbsp;-JH&nbsp;
+<P>
+2. すべての JISx0208 で定義された文字をおきかえる。
+<P>
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;kakasi&nbsp;-Hk&nbsp;-Kk&nbsp;-Jk&nbsp;-Ea
+<P>
+3. すべての文字を JISx0208 の文字におきかえる。
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;kakasi&nbsp;-aE&nbsp;-jE&nbsp;-gE&nbsp;-kK
+<P>
+4. ローマ字変換
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;kakasi&nbsp;-Ha&nbsp;-Ka&nbsp;-Ja&nbsp;-Ea&nbsp;-ka
+<P>
+5. かたかなとひらがなを交換
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;kakasi&nbsp;-HK&nbsp;-KH
+</DL>
+<P>
+
+<A NAME="lbAF">&nbsp;</A>
+<H2>漢字コーディング</H2>
+
+<P>
+
+<I>KAKASI</I>
+
+では次の漢字コーディングシステムが使えます。
+<P>
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JIS,&nbsp;OLDJIS,&nbsp;EUC,&nbsp;DEC,&nbsp;SJIS
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-i{jis, oldjis, euc, dec, sjis}<DD>
+
+入力側の漢字コードを指定します。
+もしも指定されない場合には入力から判断しようとします。
+<I>KAKASI</I>
+
+は入力をためこんで統計的に処理する方法がとれないので、
+最初の漢字らしい文字をもって判断します。
+<P>
+1. ESC-$-B
+<BR>
+
+JIS コーディングと解釈します。
+またこれ以降は G0 に 新JIS が指示されたものとします。
+<P>
+2. ESC-$-@
+<BR>
+
+旧JIS コーディングと解釈します。
+またこれ以降は G0 に 旧JIS が指示されたものとします。
+<P>
+3. 0x80 以上の値
+<BR>
+
+この時さらに 1 Byte を入力して、
+この 2 Byte で シフトJIS の JISx0208 文字として解釈できる場合、
+新JIS コーディングと解釈します。
+またこれ以降は GR は使えず シフトJIS の文字として解釈されます。
+<P>
+4. 0x80 で上記に該当しない
+<BR>
+
+以降は EUC コーディングを仮定します。
+<BR>
+
+なお、オプションで指定する以外に DEC コーディングが指定されることはありません。
+<BR>
+
+最初にJISx0201のかたかなを表現する 0xa0 以上のコードに遭遇した場合と、
+EUC コードなのに SJIS としても解釈され得る文字に遭遇すると誤って解釈します。
+つまり `燹' から `螢' までの 945 文字のいずれかが EUC で表現されていても
+SJIS に解釈されてしまいます。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-o{jis, oldjis, euc, dec, sjis}<DD>
+
+出力側の漢字コーディングを指定します。
+もしも指定されない場合には入力と同じにします。
+</DL>
+<P>
+
+漢字のコーディングのモデルとしては、
+以下のように文字セットの指示と呼出しがされているものとします。
+<P>
+
+JIS:
+<P>
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;GL&nbsp;--&nbsp;G0&nbsp;--&nbsp;ASCII
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;GR&nbsp;--&nbsp;G1&nbsp;--&nbsp;JISx0201のかたかな
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G2&nbsp;--&nbsp;JISx0201のかたかな
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G3&nbsp;--&nbsp;JISx0201のかたかな
+<P>
+
+JISx0208 の文字は ESC-$-B を用いて G0 に指示をして出力します。
+<P>
+
+OLDJIS:
+<P>
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;GL&nbsp;--&nbsp;G0&nbsp;--&nbsp;JISROMAN
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;GR&nbsp;--&nbsp;G1&nbsp;--&nbsp;JISx0201のかたかな
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G2&nbsp;--&nbsp;JISx0201のかたかな
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G3&nbsp;--&nbsp;JISx0201のかたかな
+<P>
+
+JISx0208 の文字は ESC-$-@ を用いて G0 に旧JISを指示をして出力します。
+<P>
+
+EUC:
+<P>
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;GL&nbsp;--&nbsp;G0&nbsp;--&nbsp;ASCII
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G1&nbsp;--&nbsp;JISx0201のかたかな
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G2&nbsp;--&nbsp;JISx0201のかたかな
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;GR&nbsp;--&nbsp;G3&nbsp;--&nbsp;JISx0208&nbsp;の文字
+<P>
+
+JISx0201のかたかなの表示には ESC-N (シングル シフト)を使って、
+GR に G2 を呼出して出力します。
+<P>
+
+DEC:
+<P>
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;GL&nbsp;--&nbsp;G0&nbsp;--&nbsp;ASCII
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G1&nbsp;--&nbsp;GRAPHIC
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G2&nbsp;--&nbsp;JISx0201のかたかな
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;GR&nbsp;--&nbsp;G3&nbsp;--&nbsp;JISx0208&nbsp;の文字
+<P>
+
+JISx0201のかたかなの表示には ESC-} を使って GR に G2 を呼出して出力します。
+<P>
+
+SJIS:
+<P>
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;GL&nbsp;--&nbsp;G0&nbsp;--&nbsp;ASCII
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G1&nbsp;--&nbsp;JISx0201のかたかな
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G2&nbsp;--&nbsp;JISx0201のかたかな
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G2&nbsp;--&nbsp;JISx0201のかたかな
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;GR&nbsp;--&nbsp;SHIFTJIS
+<P>
+
+JISx0201のかたかなとJISx0208 の文字の表示は GR で行います。
+<P>
+
+入力側では次のようにエスケープシークエンスを解釈します。
+<P>
+
+呼出し:
+<BR>
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G3
+<BR>
+
+GL:        SI     SO    ESC-n  ESC-o
+<BR>
+
+GR:              ESC-~  ESC-}  ESC-|
+<P>
+シングルシフト:
+<BR>
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G3
+<BR>
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ESC-N&nbsp;&nbsp;ESC-O
+<BR>
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(SS2)&nbsp;&nbsp;(SS3)
+<P>
+指示：
+<BR>
+
+<BR>
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ASCII&nbsp;&nbsp;&nbsp;JISROMAN&nbsp;GRAPHIC&nbsp;&nbsp;かたかな&nbsp;&nbsp;&nbsp;旧JIS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新JIS
+<BR>
+
+G0:   ESC-(-B  ESC-(-J  ESC-(-0  ESC-(-I   ESC-$-@   ESC-$-B
+<BR>
+
+G1:   ESC-)-B  ESC-)-J  ESC-)-0  ESC-)-I  ESC-$-)-@ ESC-$-)-B
+<BR>
+
+G2:   ESC-*-B  ESC-*-J  ESC-*-0  ESC-*-I  ESC-$-*-@ ESC-$-*-B
+<BR>
+
+G3:   ESC-+-B  ESC-+-J  ESC-+-0  ESC-+-I  ESC-$-+-@ ESC-$-+-B
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>漢字かな変換オプション</H2>
+
+<P>
+
+<B>-Jx</B>
+
+あるいは
+<B>-w</B>
+
+を使って漢字からの変換にのみ適用されるオプションです。
+他の変換には影響しません。
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-p<DD>
+
+辞書中で照合したものが複数ある時に、そのすべてを表示します。
+多くの単語は複数の読みがあります。
+その場合 {} でくくって表示します。
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;素子&nbsp;-&gt;&nbsp;{もとこ|そし}
+
+<BR>
+
+
+
+
+<DT>-s<DD>
+
+漢字からの変換で変換ごとに空白等の区切を入れるようにします。
+前にすでに改行、空白、TAB が入っていればなにもしませんが、
+なければ空白文字を入れます。
+また後ろにも空白を入れます。
+漢字かな混じり文をローマ字に変換する場合には不可欠ですね。
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&quot;漢字かな混じり文をローマ字に変換&quot;
+<BR>
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;kan'zi&nbsp;kana&nbsp;ma&nbsp;ziri&nbsp;bun'&nbsp;woro-ma&nbsp;zi&nbsp;ni&nbsp;hen'kan'&nbsp;&quot;
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-S<DD>
+
+-s オプションあるいは -w オプション指定時に出力される区切り文字は
+デフォルトでは空白文字 ' ' ですが、
+-S オプションで任意の ASCII 文字列を指定することができます。
+たとえば -s -S__ のようにオプションを与えると、
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&quot;漢字かな混じり文を&quot;
+<P>
+が、
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&quot;漢字__かな__混__じり__文__を&quot;
+<P>
+となります。あるいは、-s -S&quot;&lt;sep&gt;&quot; とすれば、
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&quot;漢字&lt;sep&gt;かな&lt;sep&gt;混&lt;sep&gt;じり&lt;sep&gt;文&lt;sep&gt;を&quot;
+<P>
+となります。
+
+<BR>
+
+
+
+
+<DT>-f<DD>
+
+ふりがなモード。
+つまり変換前の漢字の脇にその読みを差し込みます。
+<P>
+<BR>&nbsp;&nbsp;&quot;変換前の漢字の脇に&quot;
+<P>
+<BR>&nbsp;&nbsp;&quot;変換前[へんかんまえ]の漢字[かんじ]の脇[わき]に&quot;
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-F<DD>
+
+ふりがなモード時の括弧として任意の ASCII 文字列を指定します。
+左右の括弧に対応して -Fl と -Fr というサフィックスがつきます。
+たとえば、左側に左丸括弧を指定するには -Fl&quot;(&quot; と、
+右側に右丸括弧を指定するには -Fr&quot;)&quot; と指定します。
+<P>
+<BR>&nbsp;&nbsp;&quot;変換前(へんかんまえ)の漢字(かんじ)の脇(わき)に&quot;
+<P>
+あるいは、-JF -f -Fl&quot;&lt;ruby&gt;&quot; -Fr&quot;&lt;/ruby&gt;&quot; のように指定すると、
+以下のようにできます。
+<P>
+<BR>&nbsp;&nbsp;&quot;変換前&lt;ruby&gt;へんかんまえ&lt;/ruby&gt;の漢字&lt;ruby&gt;かんじ&lt;/ruby&gt;の脇&lt;ruby&gt;わき&lt;/ruby&gt;に&quot;
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-c<DD>
+
+漢字熟語中に含まれる、空白や改行を除いて読むようにします。
+複数の行に改行で分割されたり、行の先頭にタブや引用符がある時
+でもよみがなの解釈が行えるようにします。
+読みとばす文字の default  は{改行 タブ 空白}ですが、
+任意の ascii 文字が追加できます。
+JUNET のニュースならば、引用を示す -c'&gt;' とするといいでしょう。
+以下の例では -c&quot;&gt;_&quot; としたものです。
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&nbsp;このバグについてはこれから検
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&nbsp;討してみます。&nbsp;&nbsp;谷_山__浩_子
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&nbsp;このバグについてはこれからけんとう
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&nbsp;してみます。&nbsp;&nbsp;たにやま___ひろこ_
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-C<DD>
+
+漢字をローマ字に変換する場合に、
+先頭のアルファベットを大文字にします。
+-Ja -Jj と共に使った場合のみ有効です。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-U<DD>
+
+漢字をローマ字に変換する場合に、
+アルファベットをすべて大文字にします。
+-Ja -Jj と共に使った場合のみ有効です。
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>その他のオプション</H2>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-rk<DD>
+
+ローマ字への変換様式をヘボン式から訓令式に変更します。
+例えば、'し' は標準では 'shi' ですが、 'si' になります。
+<B>-r</B>
+
+のみもしくは、
+<B>-rh</B>
+
+などの指定では
+<I>Hepburn (ヘボン)</I>
+
+式になります。
+</DL>
+<P>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>-t<DD>
+
+ローマ字への変換で従来のヘボン式を利用します。
+
+<BR>
+
+
+
+
+<DT>-u<DD>
+
+文字の出力ごとに
+<B>fflush()</B>
+
+を呼びます。
+system V などで端末出力をすぐ見たい時に必要になるかもしれません。
+
+<BR>
+
+
+
+
+<DT>-w<DD>
+
+分かち書きをします。詳しくは、README.wakati をご覧下さい。
+
+<BR>
+
+
+
+
+<DT>-l[123456jn]<DD>
+
+学年別ひらがな変換機能(仮名表記モード)を指定します。
+詳しくは、README.level をご覧下さい。
+
+<BR>
+
+
+
+
+<DT>-L[123456jn]<DD>
+
+学年別ひらがな変換機能(振り仮名モード)を指定します。
+詳しくは、README.level をご覧下さい。
+</DL>
+<A NAME="lbAI">&nbsp;</A>
+<H2>辞書</H2>
+
+<I>KAKASI</I>
+
+ではユーザの辞書を任意に追加することができます。使用できる辞書は
+<I>SKK</I>
+
+の辞書に準じたフォーマットか
+<I>Wnn</I>
+
+の ASCII 形式などのように、
+1 行に読みと熟語の順に並んでいて、
+空白、タブ、カンマ等で区切られているものが使えます。
+辞書の漢字コーディングは JIS または EUC に限ります。
+詳細については JISYO というファイルを参照してください。
+<A NAME="lbAJ">&nbsp;</A>
+<H2>環境変数</H2>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>KANWADICTPATH<DD>
+
+kanwadict の場所 (ファイル名を含むフルパス) を指定することができます。
+省略時は $prefix/share/kakasi/kanwadict を設定したのと同じことになります。
+
+<BR>
+
+
+
+
+<DT>ITAIJIDICTPATH<DD>
+
+itaijidict の場所 (ファイル名を含むフルパス) を指定することができます。
+省略時は $prefix/share/kakasi/itaijidict を設定したのと同じことになります。
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+高橋 裕信 &lt;<A HREF="mailto:takahasi@tiny.or.jp">takahasi@tiny.or.jp</A>&gt;
+<A NAME="lbAL">&nbsp;</A>
+<H2>FILES</H2>
+
+
+<BR>
+
+
+
+
+<DL COMPACT>
+<DT>$prefix/share/kakasi/kanwadict<DD>
+
+<I>KAKASI</I>
+
+の基本辞書です。
+インストール時に mkkanwa によって作成されます。
+</DL>
+<A NAME="lbAM">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<A HREF="/cgi-bin/man/man2html?1+mkkanwa">mkkanwa</A>(1)
+<A NAME="lbAN">&nbsp;</A>
+<H2>DIAGNOSTICS</H2>
+
+辞書にトラブルがあれば 0 以外の値を返します。
+<A NAME="lbAO">&nbsp;</A>
+<H2>BUGS</H2>
+
+
+
+何かありましたら、高橋さんにではなく、KAKASI プロジェクト
+&lt;<A HREF="mailto:kakasi-dev@namazu.org">kakasi-dev@namazu.org</A>&gt; までお知らせ下さい。
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">文字セットの変換指定オプション</A><DD>
+<DT><A HREF="#lbAF">漢字コーディング</A><DD>
+<DT><A HREF="#lbAG">漢字かな変換オプション</A><DD>
+<DT><A HREF="#lbAH">その他のオプション</A><DD>
+<DT><A HREF="#lbAI">辞書</A><DD>
+<DT><A HREF="#lbAJ">環境変数</A><DD>
+<DT><A HREF="#lbAK">AUTHOR</A><DD>
+<DT><A HREF="#lbAL">FILES</A><DD>
+<DT><A HREF="#lbAM">SEE ALSO</A><DD>
+<DT><A HREF="#lbAN">DIAGNOSTICS</A><DD>
+<DT><A HREF="#lbAO">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 11:22:00 GMT, January 23, 2013
+</BODY>
+</HTML>

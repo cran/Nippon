@@ -1,0 +1,11 @@
+
+OBJECTS = rkakasi.o
+## PKG_CFLAGS = 
+PKG_LIBS = kakasi/libkakasi.a 
+
+$(SHLIB): kakasi/libkakasi.a
+
+kakasi/libkakasi.a:
+				@echo Compiling libkakasi
+				@(cd kakasi && $(MAKE) -f Makefile.win)
+

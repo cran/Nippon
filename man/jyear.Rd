@@ -1,7 +1,7 @@
 \name{jyear}
 \alias{jyear}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Convert Japanese year style}
+\title{Conversion to  Japanese year style}
 \description{
 \code{jyear} calculates a year of the reign of an Emperor, i.e., 
 ``gengo'', which is
@@ -65,5 +65,5 @@ jyear(2000,withAD=TRUE,ascii=TRUE)
 jyear(1989,ascii=TRUE)
 jyear(1989,shift=TRUE,ascii=TRUE)
 }
-\keyword{Japanese}
-\keyword{manip}% __ONLY ONE__ keyword per line
+\keyword{Japanese language}
+% __ONLY ONE__ keyword per line

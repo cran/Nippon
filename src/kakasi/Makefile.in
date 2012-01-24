@@ -1,0 +1,47 @@
+### Makefile.in for libkakasi bundled in Nippon package
+### Susumu Tanimura <aruminat@gmail.com>
+### Time-stamp: <2013-01-23 19:30:41 umusus>
+
+build_triplet = @build@
+host_triplet = @host@
+CONFIG_HEADER = config.h
+CC = @CC@
+CFLAGS = @CFLAGS@ @CPICFLAGS@ @DEFS@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@
+CPPFLAGS = @CPPFLAGS@ -I. -static
+CPP = @CPP@
+RANLIB = @RANLIB@
+
+kanwadict = ${R_PACKAGE_DIR}/share/kanwadict
+itaijidict = ${R_PACKAGE_DIR}/share/itaijidict
+
+# EXTRA_DIST = memo.txt myMakefile TODO
+# linkakasi_SOURCE = lib78_83.c  libdict.c  libg2.c   libitaiji.c  libjj2.c \
+#  libkakasi.c   libkk2.c liba2.c     libee2.c   libhh2.c  libj2.c \
+#  libk2.c   libkanjiio.c  liblevel.c kakasi.h  level.h  libkakasi.h
+
+.SUFFIXES: .c .lo .o .a $(EXEEXT)
+
+DEFS = -DLIBRARY -DKANWADICT=\"$(kanwadict)\" -DITAIJIDICT=\"$(itaijidict)\"
+
+.c.o:
+	$(CC) $(CFLAGS) $(DEFS) -c $< -o $@ $(LDFLAGS) $(CPPFLAGS)
+
+OBJECTS = libdict.o libkakasi.o libkanjiio.o \
+	liba2.o libg2.o libj2.o libk2.o libee2.o libhh2.o \
+	libjj2.o libkk2.o libitaiji.o lib78_83.o liblevel.o
+
+SOURCES = libdict.c libkakasi.c libkanjiio.c \
+	liba2.c libg2.c libj2.c libk2.c libee2.c libhh2.c libjj2.c libkk2.c \
+	libitaiji.c lib78_83.c liblevel.c
+
+all: libkakasi.a
+##@echo Dicts are $(kanwadict) $(itaijidict)
+
+libkakasi.a: $(OBJECTS)
+	$(AR) cru $@ $^ 
+	$(RANLIB) $@
+
+clean:
+	rm -rf libkakasi.a *.lo *.o

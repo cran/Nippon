@@ -5,14 +5,15 @@
 \title{Japanese utility functions and data}
 \description{
 This package provides some Japanese utility functions and data, which
-may be useful for Japanese R users.
+may be useful not only for Japanese R users but for the English-speaking
+world.
 }
 \details{
 \tabular{ll}{
 Package: \tab Nippon\cr
 Type: \tab Package\cr
-Version: \tab 0.2.2\cr
-Date: \tab 2012-01-05\cr
+Version: \tab 0.3\cr
+Date: \tab 2012-02-05\cr
 License: \tab GPL (>=2)\cr
 }
 To avoid troubles with Japanese strings, non-ASCII Japanese characters

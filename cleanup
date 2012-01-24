@@ -1,0 +1,38 @@
+#!/bin/sh
+for f in ./config.*; do
+    rm -f $f
+done
+## configure seems to have to be remained in tar.gz
+# if [ -e ./configure ]; then
+#     rm -f ./configure
+# fi
+if [ -e ./autom4te.cache ]; then
+    rm -fr ./autom4te.cache
+fi
+
+## src subdirectory
+for f in src/*.o; do
+    rm -f $f
+done
+for f in src/*.so; do
+    rm -f $f
+done
+if [ -e src/Makevars ]; then
+    rm -f src/Makevars
+fi
+
+## src/kakasi subdirectory
+for f in src/kakasi/*.o; do
+    rm -f $f
+done
+if [ -e src/kakasi/libkakasi.a ]; then
+    rm -f src/kakasi/libkakasi.a
+fi
+if [ -e src/kakasi/config.h ]; then
+    rm -f src/kakasi/config.h
+fi
+if [ -e src/kakasi/Makefile ]; then
+    rm -f src/kakasi/Makefile
+fi
+
+exit 0

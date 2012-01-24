@@ -1,3 +1,32 @@
+2012-01-24 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.4
+	* Included source files of libkakasi extracted from kakasi
+	2.3.5pre1-cvs20101217 (http://kakasi.namazu.org/) into src/kakasi,
+	so that header files of kakasi are not needed anymore to compile
+	Nippon package
+	* Added configure.ac, configure, configure.win,cleanup, and
+	cleanup.win in top level, Makevars.in, and Makevars.win in src,
+	Makefile.in, Makefile.win, and config.h.in in src/kakasi for
+	compilation of rkakasi.c and the libkakasi source
+	* Renewed kakasi() with rkakasi statically including libkakasi
+	* Added html files of kakasi manual converted from kakasi.1 and
+	kakasi.1.ja in the original kakasi source
+	* Added itaijidict and kanwadict into data/share
+	* Added AUTHORS and README from the original kakasi source
+	* Deleted SystemRequirements from DESCRIPTION
+	* Changed kakasi.Rd
+2012-01-21 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.3.1
+	* Added new functions: Sys.kakasi()
+	* Added rkakasi.c in src
+	* Remade kakasi()
+2012-01-20 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.3
+	* Added new functions: kana2roma(), hira2kana(), kana2hira(),
+	hiragana(), katakana(), ya.hira2kata(), ya.kata2hira() as in
+	romanization.R, romanization.Rd, and kana2hira.Rd.
+	* Added data: jpn.syllabary and jpn.syllabary.add
+	* Changed Nippon-internal.Rd
 2012-01-05 Susumu Tanimura <aruminat@gmail.com>
 	* version 0.2.1
 	* Renewed DESCRIPTION

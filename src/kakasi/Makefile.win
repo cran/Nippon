@@ -1,0 +1,62 @@
+### Makefile.win for Windows to build libkakasi bundled in Nippon package
+### Susumu Tanimura <aruminat@gmail.com>
+### Time-stamp: <2013-01-24 16:28:25 umusus>
+
+# build_triplet = @build@
+# host_triplet = @host@
+# CONFIG_HEADER = config.h
+# CC = gcc -std=gnu99
+# CFLAGS = -O3 -pipe -g -fpic -DHAVE_CONFIG_H
+# LDFLAGS = 
+# LIBS = 
+# CPPFLAGS =  -I. -static
+# CPP = gcc -std=gnu99 -E
+# RANLIB = ranlib
+# EXEEXT = .exe
+
+kanwadict = ${R_PACKAGE_DIR}/share/kanwadict
+itaijidict = ${R_PACKAGE_DIR}/share/itaijidict
+
+.SUFFIXES: .c .lo .o .a $(EXEEXT)
+
+DEFS = -DLIBRARY -DKANWADICT=\"$(kanwadict)\" -DITAIJIDICT=\"$(itaijidict)\"
+
+## To avoid config.h
+DEFS += -DEACH_YOMI
+DEFS += -DHAVE_INTTYPES_H
+DEFS += -DHAVE_MALLOC
+DEFS += -DHAVE_MALLOC_H
+DEFS += -DHAVE_MEMMOVE
+DEFS += -DHAVE_MEMORY_H
+DEFS += -DHAVE_REALLOC
+DEFS += -DHAVE_STDINT_H
+DEFS += -DHAVE_STDLIB_H
+DEFS += -DHAVE_STRDUP
+DEFS += -DHAVE_STRINGS_H
+DEFS += -DHAVE_STRING_H
+DEFS += -DHAVE_SYS_STAT_H
+DEFS += -DHAVE_SYS_TYPES_H
+DEFS += -DHAVE_UNISTD_H
+DEFS += -DVERSION=\"2.3.5pre1\"
+DEFS += -DWAKATIGAKI
+
+.c.o:
+	$(CC) $(CFLAGS) $(DEFS) -c $< -o $@ $(LDFLAGS) $(CPPFLAGS)
+
+OBJECTS = libdict.o libkakasi.o libkanjiio.o \
+	liba2.o libg2.o libj2.o libk2.o libee2.o libhh2.o \
+	libjj2.o libkk2.o libitaiji.o lib78_83.o liblevel.o
+
+SOURCES = libdict.c libkakasi.c libkanjiio.c \
+	liba2.c libg2.c libj2.c libk2.c libee2.c libhh2.c libjj2.c libkk2.c \
+	libitaiji.c lib78_83.c liblevel.c
+
+all: libkakasi.a
+
+libkakasi.a: $(OBJECTS)
+	$(AR) cru $@ $^ 
+#	$(RANLIB) $@
+	ranlib $@
+
+clean:
+	rm -rf libkakasi.a *.lo *.o

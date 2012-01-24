@@ -43,3 +43,4 @@ kakasi(head(prefecture$name))
 }
 }
 \keyword{datasets}
+\keyword{Japan}

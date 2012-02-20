@@ -1,4 +1,17 @@
-2012-01-24 Susumu Tanimura <aruminat@gmail.com>
+2013-02-20 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.4.2
+	* Updated libkakasi cvs 20130220
+	* Fixed src/kakasi/Makefile.in
+	* Fixed kakasi.R
+	* Added new function jholiday() as jholiday.R and jholiday.Rd
+	* Added some internal fucntions in Nippon-internal.Rd
+	* Finxed src/Makevers pointed by Prof. Kurt Hornik 
+2013-01-30 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.4.1
+	* Fixed Makevars.win
+	* Fixed dates in ChangeLog
+	* Deleted src/Makevars
+2013-01-24 Susumu Tanimura <aruminat@gmail.com>
 	* version 0.4
 	* Included source files of libkakasi extracted from kakasi
 	2.3.5pre1-cvs20101217 (http://kakasi.namazu.org/) into src/kakasi,
@@ -15,19 +28,19 @@
 	* Added AUTHORS and README from the original kakasi source
 	* Deleted SystemRequirements from DESCRIPTION
 	* Changed kakasi.Rd
-2012-01-21 Susumu Tanimura <aruminat@gmail.com>
+2013-01-21 Susumu Tanimura <aruminat@gmail.com>
 	* version 0.3.1
 	* Added new functions: Sys.kakasi()
 	* Added rkakasi.c in src
 	* Remade kakasi()
-2012-01-20 Susumu Tanimura <aruminat@gmail.com>
+2013-01-20 Susumu Tanimura <aruminat@gmail.com>
 	* version 0.3
 	* Added new functions: kana2roma(), hira2kana(), kana2hira(),
 	hiragana(), katakana(), ya.hira2kata(), ya.kata2hira() as in
 	romanization.R, romanization.Rd, and kana2hira.Rd.
 	* Added data: jpn.syllabary and jpn.syllabary.add
 	* Changed Nippon-internal.Rd
-2012-01-05 Susumu Tanimura <aruminat@gmail.com>
+2013-01-05 Susumu Tanimura <aruminat@gmail.com>
 	* version 0.2.1
 	* Renewed DESCRIPTION
 	* Fixed prefectures.rda

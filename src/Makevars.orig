@@ -1,0 +1,10 @@
+OBJECTS = rkakasi.o
+PKG_CFLAGS = -O3 -pipe -g
+PKG_LIBS = kakasi/libkakasi.a  
+
+$(SHLIB): kakasi/libkakasi.a
+
+kakasi/libkakasi.a:
+				@echo  Compiling libkakasi!
+				@(cd kakasi && $(MAKE) libkakasi.a)
+

@@ -1,12 +1,12 @@
 ### Makefile.in for libkakasi bundled in Nippon package
 ### Susumu Tanimura <aruminat@gmail.com>
-### Time-stamp: <2013-01-23 19:30:41 umusus>
+### Time-stamp: <2013-02-20 16:44:07 umusus>
 
 build_triplet = @build@
 host_triplet = @host@
 CONFIG_HEADER = config.h
 CC = @CC@
-CFLAGS = @CFLAGS@ @CPICFLAGS@ @DEFS@
+CFLAGS = @CFLAGS@  @CPICFLAGS@ @DEFS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 CPPFLAGS = @CPPFLAGS@ -I. -static

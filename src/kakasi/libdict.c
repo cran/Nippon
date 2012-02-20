@@ -1,6 +1,6 @@
 /*
  * KAKASI (Kanji Kana Simple inversion program)
- * $Id: dict.c,v 1.10 2006-04-18 07:03:29 knok Exp $
+ * $Id: dict.c,v 1.12 2013-02-20 05:36:43 knok Exp $
  * Copyright (C) 1992
  * Hironobu Takahashi (takahasi@tiny.or.jp)
  *
@@ -42,6 +42,11 @@
 # include <malloc.h>
 #endif
 #include <stdlib.h>
+#ifdef HAVE_STDINT_H
+# include <stdint.h>
+#else
+#define uintptr_t (int)
+#endif
 #include "kakasi.h"
 
 #define BUFLEN 1024
@@ -119,7 +124,7 @@ cellalloc()
 	char *cptr;
 	cptr = malloc((CELLALLOC+1)*sizeof(struct kanji_yomi));
 	add_ary_cellalloc(cptr);
-	if ((int)cptr & 7) cptr += 8 - ((int)cptr & 7);
+	if ((uintptr_t)cptr & 7) cptr += 8 - ((uintptr_t)cptr & 7);
 	ptr_cellalloc = (struct kanji_yomi *) cptr;
 	point_cellalloc = 0;
     }

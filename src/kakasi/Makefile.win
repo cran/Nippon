@@ -1,12 +1,13 @@
 ### Makefile.win for Windows to build libkakasi bundled in Nippon package
 ### Susumu Tanimura <aruminat@gmail.com>
-### Time-stamp: <2013-01-24 16:28:25 umusus>
+### Time-stamp: <2013-02-20 16:47:03 umusus>
 
 # build_triplet = @build@
 # host_triplet = @host@
 # CONFIG_HEADER = config.h
 # CC = gcc -std=gnu99
 # CFLAGS = -O3 -pipe -g -fpic -DHAVE_CONFIG_H
+# CFLAGS = "$(CFLAGS) -Wno-unused-result"
 # LDFLAGS = 
 # LIBS = 
 # CPPFLAGS =  -I. -static

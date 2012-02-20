@@ -1,5 +1,5 @@
 ### Susumu Tanimura <aruminat@gmail.com>
-### Time-stamp: <2013-01-24 17:26:17 umusus>
+### Time-stamp: <2013-02-20 16:59:41 umusus>
 ### kakasi function fimaly
 
 kakasi <- function(x, kakasi.option="-Ha -Ka -Ja -Ea -ka",
@@ -23,7 +23,7 @@ kakasi <- function(x, kakasi.option="-Ha -Ka -Ja -Ea -ka",
   ops <- c(" ", ops)
   stopifnot(length(ops) != 0)
   lc.ctype <- Sys.getlocale("LC_CTYPE")
-  if (lc.ctype != "ja_JP.UTF-8"){
+  if (lc.ctype != "ja_JP.UTF-8" || lc.ctype != ""){
     if (Sys.getlocale("LC_CTYPE") == "Japanese_Japan.932") x <- sjis2utf8(x)
   }else{
     warning("kakasi() assumes \"ja_JP.UTF-8\" for LC_TYPE")

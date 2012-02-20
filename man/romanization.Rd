@@ -5,14 +5,12 @@
 \title{Romanization of Japanese}
 
 \description{
-	
-	Japanese characters in a string or character vector are romanized with
-	the their sounds for the English-speaking world. While
-	\code{\link{kakasi}} in \pkg{Nippon} package works for romanization of
-	Japanese, alternative romaization of Japanese is limitedly avaiable
-	with \code{kana2roma}. Unlike the \code{kakasi} function,
-	\code{kana2roma} works without any help of an external program.
-
+Japanese characters in a string or character vector are romanized with
+the their sounds for the English-speaking world. While
+\code{\link{kakasi}} in \pkg{Nippon} package works for romanization of
+Japanese, alternative romaization of Japanese is limitedly avaiable
+with \code{kana2roma}. Unlike the \code{kakasi} function,
+\code{kana2roma} works without any help of an external program.
 }
 
 \usage{

@@ -1,6 +1,6 @@
 /*
  * KAKASI (Kanji Kana Simple inversion program)
- * $Id: g2.c,v 1.2 2001-01-16 07:51:47 rug Exp $
+ * $Id: g2.c,v 1.3 2013-01-31 06:49:43 knok Exp $
  * Copyright (C) 1992
  * Hironobu Takahashi (takahasi@tiny.or.jp)
  *
@@ -33,7 +33,7 @@ g2a(c, n)
 
     n[0].type = ASCII;
     if ((c->c1 >= 0x60) && (c->c1 < 0x7f)) {
-	n[0].c1 = g2a_table[c->c1];
+	n[0].c1 = g2a_table[c->c1 - 0x60];
     }
     n[1].type=OTHER;
     n[1].c1 = '\0';
@@ -51,7 +51,7 @@ g2j(c, n)
 
     c->type = ASCII;
     if ((c->c1 >= 0x60) && (c->c1 < 0x7f)) {
-	c->c1 = g2j_table[c->c1];
+	c->c1 = g2j_table[c->c1 - 0x60];
     }
     n[1].type=OTHER;
     n[1].c1 = '\0';

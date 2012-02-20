@@ -1,6 +1,6 @@
 /*
  * KAKASI (Kanji Kana Simple inversion program)
- * $Id: kanjiio.c,v 1.15 2007-11-01 08:05:30 knok Exp $
+ * $Id: kanjiio.c,v 1.17 2013-02-07 07:26:18 knok Exp $
  * Copyright (C) 1992
  * Hironobu Takahashi (takahasi@tiny.or.jp)
  *
@@ -539,10 +539,11 @@ getkanji(c)
 	if (!utf8converted && input_term_type == UTF8) {
 	    char utf8[6], eucj[3];
 	    char *from = utf8, *to = eucj;
-	    size_t fromlen = 0, tolen = 3, l;
+	    size_t fromlen = 0, tolen = 3;
 	    int i, len, mask;
 	    utf8converted = 1;
 	    UTF8_COMPUTE(c1, mask, len);
+	    (void) mask;
 	    if (len <= 1) {
 		unget1byte(c1);
 		getkanji(c);
@@ -555,7 +556,7 @@ getkanji(c)
 	    fromlen = len;
 	    if (fromutf8 == (iconv_t) -1)
 		fromutf8 = iconv_open("EUC-JP", "UTF-8");
-	    l = iconv(fromutf8, &from, &fromlen, &to, &tolen);
+	    iconv(fromutf8, &from, &fromlen, &to, &tolen);
 	    if (tolen == 1) {
 		unget1byte(eucj[1]);
 		unget1byte(eucj[0]);
@@ -1060,13 +1061,13 @@ pututf8(f, s)
 {
     char fromstr[1024], tostr[1024];
     char *from = fromstr, *to = tostr;
-    size_t fromlen = 2, tolen = 6, l;
+    size_t fromlen = 2, tolen = 6;
     int i;
     fromstr[0] = (char) f;
     fromstr[1] = (char) s;
     if (toutf8 == (iconv_t) -1)
 	toutf8 = iconv_open("UTF-8", "EUC-JP");
-    l = iconv(toutf8, &from, &fromlen, &to, &tolen);
+    iconv(toutf8, &from, &fromlen, &to, &tolen);
     if (tolen >= 6 || tolen < 0)
 	return;
     for (i = 0; i < (6 - tolen); i ++) {

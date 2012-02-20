@@ -1,5 +1,5 @@
 /*
- * $Id: kakasi.c,v 1.40 2007-11-01 06:00:34 knok Exp $
+ * $Id: kakasi.c,v 1.41 2013-02-06 06:05:02 knok Exp $
  * Copyright (C) 1992
  * Hironobu Takahashi (takahasi@tiny.or.jp)
  *
@@ -840,7 +840,6 @@ output_yomi_eachkanji(Character *c, int len)
     
     putkanji(ek_bc);
     for (i = 0; i < len; i ++) {
-        int ret;
 	if (c[i].c1 >= 0xb0 ||
 	    ((c[i].c1 == 0xa1) && (c[i].c2 >= 0xb8 && c[i].c2 <= 0xba)) ||
 	    ((c[i].c1 == 0xa5) && (c[i].c2 >= 0xf5 && c[i].c2 <= 0xf6))) {
@@ -851,7 +850,7 @@ output_yomi_eachkanji(Character *c, int len)
 	    cbuf[1].c2 = 0;
 	    putkanji(cbuf);
 	    putkanji(ek_kysep);
-	    ret = J2H(cbuf, rbuf);
+	    J2H(cbuf, rbuf);
 	    putkanjis(rbuf);
 	}
     }

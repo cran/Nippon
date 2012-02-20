@@ -5,6 +5,9 @@
 \alias{jdate}
 \alias{jpn.syllabary}
 \alias{jpn.syllabary.add}
+\alias{.Shunbun}
+\alias{.Shubun}
+\alias{.findDateByWeekday}
 
 %\docType{data}
 \title{Internal objects in the Nippon package}
@@ -18,7 +21,18 @@ jiscolors
 jdate
 jpn.syllabary
 jpn.syllabary.add
+.Shunbun(year)
+.Shubun(year)
+.findDateByWeekday(year, month, weekday, ordinal)
 }
+\arguments{
+\item{year}{A numeric value. A year should be as anno Domini between
+	1947 and 2150.}
+\item{month}{A numeric value.}
+\item{weekday}{Strings in current locale}
+\item{ordinal}{A numeric value}
+}
+
 \format{
 	zenkaku is a list, and jiscolors is a data frame. jpn.syllabary and
 	jpn.syllabary.add are character data frames.
@@ -41,7 +55,14 @@ Katakana, three main systems for the romanization of Japanese: Hepburn,
 Nihon-shiki and Kunrei-shiki.
 
 \code{jpn.syllabary.add} is an unofficial conversion table, but it is
-widely used especially in ICT. 
+widely used especially in ICT.
+
+\code{.Shunbun}, \code{.Shubun}, and \code{.findDateByWeekday} are
+internal functions for \code{jholiday}, and not for
+users. \code{.Shunbun} and \code{.Shubun} get a year and provide date of
+Vernal and Autumnal Equinox Day, respectively. \code{.findDateByWeekday}
+simply answers, for example, what date is the second Monday in April,
+2013.
 }
 % \source{
 % %%  ~~ reference to a publication or URL from which the data were obtained ~~

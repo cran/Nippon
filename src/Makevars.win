@@ -7,5 +7,5 @@ $(SHLIB): kakasi/libkakasi.a
 
 kakasi/libkakasi.a:
 				@echo Compiling libkakasi
-				@(cd kakasi && $(MAKE) -f Makefile.win)
+				@(cd kakasi && $(MAKE) CC="${CC}" -f Makefile.win)
 

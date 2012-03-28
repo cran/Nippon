@@ -20,13 +20,16 @@ Sys.kakasi(x, kakasi.option="-Ha -Ka -Ja -Ea -ka", invisible=TRUE)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{A character vector}
-	\item{kakasi.option}{Options passed to kakasi program}
+	\item{kakasi.option}{A chracter string specifying the options passed
+		to kakasi library/program}
 	% \item{romaji}{Romaji conversion system: "hepburn", or "kunrei". Default is
 	% "hepburn"}
-	\item{ITAIJIDICTPATH}{Environmental variable of itaijidict passed to
-		kakasi library. Default is "/usr/share/kakasi/itaijidict"}
-	\item{KANWADICTPATH}{Environmental variable of kanwadict passed to
-		kakasi library. Default is "/usr/share/kakasi/kanwadict"}
+	\item{ITAIJIDICTPATH}{A character string specifying the path to
+		itaijidict.  Environmental variable of itaijidict passed to
+		kakasi library.}
+	\item{KANWADICTPATH}{A character string specifying the path to
+		kanwadict.  Environmental variable of kanwadict passed to
+		kakasi library.}
 	\item{invisible}{Under Windows, do not open an extra window}
 }
 \details{

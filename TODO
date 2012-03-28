@@ -1,7 +1,9 @@
 TODO list for Nippon package
 ===============================
 
-- add a function for cacluate Japanese holidaies
+- [DONE] add a function for cacluate Japanese holidaies
 - add a function to fix mismatchings of the same Japanese name with
-   orthographic variation. This happens in different transliteration process.
+   orthographic variation. This happens in different transliteration
+   process.
+- Simple map of Japan in prefecture level.
 

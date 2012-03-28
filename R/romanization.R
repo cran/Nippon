@@ -1,16 +1,12 @@
 ### Susumu Tanimura <aruminat@gmail.com>
-### Time-stamp: <2013-01-07 18:18:03 umusus>
+### Time-stamp: <2013-03-28 19:02:06 umusus>
 ### romanization.R
 ### Convert from Hiragana or Katakana to Romanji without kakasi
 
 .syllabicate.hira <- function(y){
   ye <- strsplit(y, NULL)
   res <- lapply(ye, function(z){
-## i <- grep('[ゃゅょ]', z)
-## e3 82 83	ゃ
-## e3 82 85	ゅ
-## e3 82 87	ょ
-    i <- grep('\xe3\x82[\x83\x85\x87]', z, useBytes = TRUE)
+    i <- grep('[\u3083\u3085\u3087]', z)
     if(any(i)){
       z[i-1] <- sapply(i, function(j){
         paste(z[j-1], z[j], sep = '')
@@ -57,7 +53,7 @@ kana2roma <- function(x, type = c("Hepburn", "Nippon.shiki", "Kunrei.shiki"),
               Kunrei.shiki = 5)
   tbl <- c(jpn.syllabary[, i], jpn.syllabary.add$Romaji)
   names(tbl) <- c(jpn.syllabary$Hiragana, jpn.syllabary.add$Hiragana)
-  print(tbl)
+##  print(tbl)
   y <- .syllabicate.hira(kata2hira(x))
   s <- sapply(y, function(z){
     j <- is.na(r <- tbl[z])

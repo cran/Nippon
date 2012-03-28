@@ -12,8 +12,8 @@ world.
 \tabular{ll}{
 Package: \tab Nippon\cr
 Type: \tab Package\cr
-Version: \tab 0.3\cr
-Date: \tab 2012-02-05\cr
+Version: \tab 0.4.3\cr
+Date: \tab 2013-02-26\cr
 License: \tab GPL (>=2)\cr
 }
 To avoid troubles with Japanese strings, non-ASCII Japanese characters

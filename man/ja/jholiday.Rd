@@ -2,7 +2,7 @@
 \alias{jholiday}
 \alias{is.jholiday}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Calculate public holidays in Japan}
+\title{日本の祝日計算}
 \description{
 This function is to calculate public holidays in Japan for given year.
 }

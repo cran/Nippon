@@ -1,3 +1,13 @@
+2013-03-28 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.5.1
+	* Removed non-ASCII characters from romanization.R
+	* Fixed romanization.R and romanization.Rd
+2013-02-26 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.5
+	* Added new function JapanPrefecturesMap() as JapanPrefecturesMap.R
+	and JapanPrefecturesMap.Rd
+	* Added jpn.shp jpn.dbf. jpn.shx into inst/shapes
+	* Changed configure.ac to check gcc
 2013-02-20 Susumu Tanimura <aruminat@gmail.com>
 	* version 0.4.2
 	* Updated libkakasi cvs 20130220

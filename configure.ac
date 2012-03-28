@@ -1,6 +1,6 @@
 ## configure.ac for Nippon package
 ## Susumu Tanimura <aruminat@gmail.com>
-## Time-stamp: <2013-01-23 18:30:07 umusus>
+## Time-stamp: <2013-02-26 11:32:57 umusus>
 
 define([pkgversion], esyscmd([sh -c "grep Version: DESCRIPTION | cut -d' ' -f2 | tr -d '\n'"]))
 
@@ -26,6 +26,13 @@ RBIN="${R_HOME}/bin/R"
 : ${LDFLAGS=`"${RBIN}" CMD config LDFLAGS`}
 
 AC_PROG_RANLIB
+
+# Check for gcc
+AC_PROG_CC
+if test -n "$GCC"; then
+#  CFLAGS="$CFLAGS -Wall -Wunused -Wuninitialized -Wmissing-prototypes -Wmissing-declarations -pedantic -Wno-unused-result"
+  CFLAGS="$CFLAGS -Wno-unused-result"
+fi
 
 AC_CHECK_HEADERS([malloc.h stdlib.h string.h strings.h])
 AC_TYPE_SIZE_T

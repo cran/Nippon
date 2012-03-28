@@ -1,6 +1,5 @@
 \name{romanization}
 \alias{kana2roma}
-\alias{.syllabicate.hira}
 
 \title{Romanization of Japanese}
 
@@ -8,21 +7,19 @@
 Japanese characters in a string or character vector are romanized with
 the their sounds for the English-speaking world. While
 \code{\link{kakasi}} in \pkg{Nippon} package works for romanization of
-Japanese, alternative romaization of Japanese is limitedly avaiable
+Japanese, alternative romanization of Japanese is limitedly available
 with \code{kana2roma}. Unlike the \code{kakasi} function,
-\code{kana2roma} works without any help of an external program.
+\code{kana2roma} works without any help of an external library.
 }
 
 \usage{
 kana2roma(x, type = c("Hepburn", "Nippon.shiki", "Kunrei.shiki"), 
     cap = FALSE, ascii.only = TRUE)
-.syllabicate.hira(y)
 }
 
 \arguments{
   \item{x}{A character vector including Japanese Hiragana or Katakana}
-  \item{y}{A character vector including Japanese Hiragana only}
-  \item{type}{A type of romanization. Default is "Hepburn"}
+  \item{type}{A character string specifying the type of romanization.  Default is "Hepburn"}
   \item{cap}{logical. Capital letters to be uppercased, Default is FALSE}
   \item{ascii.only}{logical. Transcribed with ASCII characters only. Default is TRUE}
 }
@@ -47,12 +44,7 @@ kana2roma(x, type = c("Hepburn", "Nippon.shiki", "Kunrei.shiki"),
   Set ``\code{ascii.only = TRUE}'' in \code{kana2roma} (this is default)
 	if a user needs to suppress non-ASCII Romaji. Otherwise, a pure
 	romanization system may return values with non-ASCII codes, that is,
-	macron.
-
-	\code{.syllabicate.hira} is internally used in \code{kana2roma}, and
-	not for users. This syllabicates Hiragana. Other chacters in the
-	string are split into single characters.
-	
+	macron.	
 }
 
 \value{ A character vector }

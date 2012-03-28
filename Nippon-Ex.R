@@ -5,6 +5,59 @@ library('Nippon')
 
 assign(".oldSearch", search(), pos = 'CheckExEnv')
 cleanEx()
+nameEx("JapanPrefecturesMap")
+### * JapanPrefecturesMap
+
+flush(stderr()); flush(stdout())
+
+### Name: JapanPrefecturesMap
+### Title: A simple choropleth map of Japan
+### Aliases: JapanPrefecturesMap
+### Keywords: character Japanese language
+
+### ** Examples
+
+require(foreign)
+dat <- read.dbf(system.file("shapes/jpn.dbf", package="Nippon"))
+pop.den <- round(with(dat, population / area), 1)
+
+if (require(RColorBrewer)) {
+  cols <- rev(brewer.pal(7,"RdYlBu"))
+}else{
+  cols <- gray.colors(7)
+}
+if(require(classInt)) {
+  c1 <- classIntervals(pop.den, n = 7, style = "fisher")
+  colcode <- findColours(c1, cols, cutlabels = FALSE)
+  legtext <- paste(names(attr(colcode,"table")), "(", attr(colcode, "table"), ")")
+}else{
+  brks <- (0:7)/10
+  colcode <- cols[findInterval(pop.den, brks, all.inside = TRUE)]
+  legtext <- leglabs(brks, under = "under", over = "over", between = "-")
+}
+
+JapanPrefecturesMap(col = colcode, axes = TRUE)
+legend("bottomright", legend = legtext,
+       fill = cols, title="Population density", bty="n")
+
+op <- par(bg = "skyblue")
+p <- JapanPrefecturesMap(col = "ivory")
+col <- c("olivedrab4", "olivedrab1")
+pop <- dat$population / 1e+7
+symbols(p, circles = sqrt(pop / (2 * pi)), inches = FALSE,
+    fg = col[1], bg = col[2], add = TRUE)
+idx <- c(1e+6, 5e+6, 1e+7)
+pos <- legend("bottomright", legend = format(idx, scientific = 10, big.mark = ","),
+    title = "Population (2010)", bg = "white", x.intersp = 2, y.intersp = 1.5)
+symbols(pos$text$x - 1, pos$text$y, circles = sqrt(idx / 1e+7 / (2 * pi)),
+    inches = FALSE, fg = col[1], bg = col[2], add = TRUE)
+par(op)
+
+
+
+
+graphics::par(get("par.postscript", pos = 'CheckExEnv'))
+cleanEx()
 nameEx("JapaneseColors")
 ### * JapaneseColors
 
@@ -34,9 +87,9 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-jholiday(2013)
-d <- as.Date(c("2000-09-22","2013-11-04", "1968-01-27"))
-is.jholiday(d)
+    jholiday(2013)
+    d <- as.Date(c("2000-09-22","2013-11-04", "1968-01-27"))
+    is.jholiday(d)
 
 
 
@@ -178,7 +231,7 @@ flush(stderr()); flush(stdout())
 
 ### Name: romanization
 ### Title: Romanization of Japanese
-### Aliases: kana2roma .syllabicate.hira
+### Aliases: kana2roma
 ### Keywords: Japanese language character
 
 ### ** Examples

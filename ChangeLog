@@ -1,3 +1,6 @@
+2013-04-08 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.5.2
+	* Fixed configure.ac not to fail on OS X
 2013-03-28 Susumu Tanimura <aruminat@gmail.com>
 	* version 0.5.1
 	* Removed non-ASCII characters from romanization.R

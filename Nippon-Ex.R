@@ -3,7 +3,7 @@ source(file.path(R.home("share"), "R", "examples-header.R"))
 options(warn = 1)
 library('Nippon')
 
-assign(".oldSearch", search(), pos = 'CheckExEnv')
+base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 cleanEx()
 nameEx("JapanPrefecturesMap")
 ### * JapanPrefecturesMap
@@ -17,29 +17,15 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+if (require(RColorBrewer)) {
+  cols <- rev(brewer.pal(12,"Set2"))
+}else{
+  cols <- gray.colors(12)
+}
+JapanPrefecturesMap(col = cols, axes = TRUE)
+
 require(foreign)
 dat <- read.dbf(system.file("shapes/jpn.dbf", package="Nippon"))
-pop.den <- round(with(dat, population / area), 1)
-
-if (require(RColorBrewer)) {
-  cols <- rev(brewer.pal(7,"RdYlBu"))
-}else{
-  cols <- gray.colors(7)
-}
-if(require(classInt)) {
-  c1 <- classIntervals(pop.den, n = 7, style = "fisher")
-  colcode <- findColours(c1, cols, cutlabels = FALSE)
-  legtext <- paste(names(attr(colcode,"table")), "(", attr(colcode, "table"), ")")
-}else{
-  brks <- (0:7)/10
-  colcode <- cols[findInterval(pop.den, brks, all.inside = TRUE)]
-  legtext <- leglabs(brks, under = "under", over = "over", between = "-")
-}
-
-JapanPrefecturesMap(col = colcode, axes = TRUE)
-legend("bottomright", legend = legtext,
-       fill = cols, title="Population density", bty="n")
-
 op <- par(bg = "skyblue")
 p <- JapanPrefecturesMap(col = "ivory")
 col <- c("olivedrab4", "olivedrab1")
@@ -281,7 +267,8 @@ zen2han(zenkaku)
 
 ### * <FOOTER>
 ###
-cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
+options(digits = 7L)
+base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
 grDevices::dev.off()
 ###
 ### Local variables: ***

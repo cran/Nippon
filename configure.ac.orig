@@ -1,6 +1,6 @@
 ## configure.ac for Nippon package
 ## Susumu Tanimura <aruminat@gmail.com>
-## Time-stamp: <2013-04-08 17:49:50 umusus>
+## Time-stamp: <2013-04-08 09:37:29 umusus>
 
 define([pkgversion], esyscmd([sh -c "grep Version: DESCRIPTION | cut -d' ' -f2 | tr -d '\n'"]))
 
@@ -27,23 +27,12 @@ RBIN="${R_HOME}/bin/R"
 
 AC_PROG_RANLIB
 
-# Check for gcc >= 4.6
-AC_PROG_CC
-# gcc version 5.* is not considered here
-if test "${GCC}" = yes; then
-	 AC_MSG_CHECKING(version of gcc)
-	 GCC_VERSION="`${CC} -dumpversion`"
-	 GCC_MAJOR_VERSION="`echo ${GCC_VERSION} | cut -d. -f1`"
-	 GCC_MINOR_VERSION="`echo ${GCC_VERSION} | cut -d. -f2`"
-	 if test "${GCC_MAJOR_VERSION}" -eq "4" ; then
-	 		if test "${GCC_MINOR_VERSION}" -ge "6" ; then
-					PKG_CFLAGS="${PKG_CFLAGS} -Wno-unused-result"
-					AC_MSG_RESULT([>= 4.6])
-			else
-					AC_MSG_RESULT([< 4.6])
-			fi
-	fi	
-fi	
+# Check for gcc
+# AC_PROG_CC
+# if test -n "$GCC"; then
+##  CFLAGS="$CFLAGS -Wall -Wunused -Wuninitialized -Wmissing-prototypes -Wmissing-declarations -pedantic -Wno-unused-result"
+# CFLAGS="$CFLAGS -Wno-unused-result"
+# fi
 
 AC_CHECK_HEADERS([malloc.h stdlib.h string.h strings.h])
 AC_TYPE_SIZE_T
@@ -92,7 +81,6 @@ INPKG_CPPFLAGS="${PKG_CPPFLAGS}"
 INPKG_LIBS="${PKG_LIBS}"
 
 AC_SUBST([PKG_CPPFLAGS], ["${INPKG_CPPFLAGS} ${KAKASI_CPPFLAGS}"])
-AC_SUBST([PKG_CFLAGS], ["${PKG_CFLAGS} ${KAKASI_CPPFLAGS}"])
 AC_SUBST([PKG_LIBS], ["${INPKG_LIBS} ${KAKASI_LIBS}"])
 AC_SUBST([CPICFLAGS], ["${CPICFLAGS}"])
 AC_SUBST([CPPFLAGS], ["${CPPFLAGS}"])

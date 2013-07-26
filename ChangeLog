@@ -1,3 +1,10 @@
+2013-07-26 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.5.3
+	* Fixed inst/shapes/jpn.* for JapanPrefecturesMap()
+	* Revised example in JapanPrefecturesMap.Rd
+2013-04-09 Susumu Tanimura <aruminat@gmail.com>
+	* Revised configure.ac and src/kakasi/Makefile.in to add
+	"-Wno-unused-result" if version of gcc >= 4.6
 2013-04-08 Susumu Tanimura <aruminat@gmail.com>
 	* version 0.5.2
 	* Fixed configure.ac not to fail on OS X

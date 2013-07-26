@@ -1,13 +1,13 @@
 ### Makefile.in for libkakasi bundled in Nippon package
 ### Susumu Tanimura <aruminat@gmail.com>
-### Time-stamp: <2013-02-22 12:38:57 umusus>
+### Time-stamp: <2013-04-08 18:06:48 umusus>
 
 build_triplet = @build@
 host_triplet = @host@
 CONFIG_HEADER = config.h
 CC = @CC@
 ## CFLAGS = @CFLAGS@  -Wno-unused-result @CPICFLAGS@ @DEFS@
-CFLAGS = @CFLAGS@  @CPICFLAGS@ @DEFS@
+CFLAGS = @CFLAGS@ @PKG_CFLAGS@ @CPICFLAGS@ @DEFS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 ## MacOSX i386 has error with "-static"

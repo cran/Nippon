@@ -1,6 +1,6 @@
 /*
  * KAKASI (Kanji Kana Simple inversion program)
- * $Id: hh2.c,v 1.15 2006-09-21 07:51:12 knok Exp $
+ * $Id: hh2.c,v 1.16 2014-02-07 07:36:54 knok Exp $
  * Copyright (C) 1992
  * Hironobu Takahashi (takahasi@tiny.or.jp)
  *
@@ -788,52 +788,96 @@ H2k(c, n)
 }
 
 #ifdef WAKATIGAKI
-/* As for the hiragana as well, the function which isn't necessarily needed if reading raising becomes possible. */
-int
-H2H(c, n)
-     Character *c;
-     Character *n;
+/* As for the hiragana as well, the function whtch isn't necessarily needed if reading raising becomes possible. */
+int H2H(Character *c, Character *n)
 {
-    /* Hiragana except for '\244\362' */
-    if ((c[0].c1 == 0xA4 && c[0].c2 != 0xF2) ||
-	(c[0].c1 == 0xA1 &&
-	 (c[0].c2 == 0xBC || c[0].c2 == 0xAB || c[0].c2 == 0xAC))) {
+    /* Hiragana expect for \244\362 'を */
+    if (c[0].c1 == 0xa4 && c[0].c2 != 0xf2) {
         if (bunkatu_mode) {
-	    if (! terminate_done) {
-		if (separator_out != 1 || wo_mode == 1)
-		    separator_out = 2;
-	    } else {
-		separator_out = 1;
-	    }
+            if (wo_mode == 2) {
+                separator_out = 1;
+                n[1].type = JIS83;
+                n[1].c1 = c[0].c1;
+                n[1].c2 = c[0].c2;
+                n[2].type = OTHER;
+                n[2].c1 = 0;
+                n[2].c2 = 0;
+                wo_mode = 0;
+                return 2;
+            } else {
+                n[0].type = JIS83;
+                n[0].c1 = c[0].c1;
+                n[0].c2 = c[0].c2;
+                n[1].type = OTHER;
+                n[1].c1 = 0;
+                n[1].c2 = 0;
+                wo_mode = 0;
+                return 1;
+            }
+        } else {
+            n[0].type = JIS83;
+            n[0].c1 = c[0].c1;
+            n[0].c2 = c[0].c2;
+            n[1].type = OTHER;
+            n[1].c1 = 0;
+            n[1].c2 = 0;
+            wo_mode = 0;
+            return 1;
         }
-	wo_mode = 0;
-	n[0].type = JIS83;
-	n[0].c1 = c[0].c1;
-	n[0].c2 = c[0].c2;
-	n[1].type = OTHER;
-	n[1].c1 = 0;
-	n[1].c2 = 0;
-	return 2;
-    } else if (c[0].c1 == 0xA4 && c[0].c2 == 0xF2) { /* '\244\362' */
-	wo_mode = 1;
-	if (bunkatu_mode) {
-	    if (! terminate_done)
-		separator_out = 2;
-	}
-	n[0].type = JIS83;
-	n[0].c1 = c[0].c1;
-	n[0].c2 = c[0].c2;
-	n[1].type = OTHER;
-	n[1].c1 = 0;
-	n[1].c2 = 0;
-	return 2;
+    } else if (c[0].c1 == 0xa4 && c[0].c2 == 0xf2) { /* 'を' */
+        wo_mode = 1;
+        if (bunkatu_mode) {
+            int i;
+            if (! terminate_done)
+                separator_out = 2;
+            n[0].type = JIS83;
+            n[0].c1 = c[0].c1;
+            n[0].c2 = c[0].c2;
+            for (i = 0; i < KAKASIBUF && separator[i].c1 != 0; i++) {
+                n[i+1].type = separator[i].type;
+               n[i+1].c1 = separator[i].c1;
+                n[i+1].c2 = separator[i].c2;
+            }
+            n[i+1].type = separator[i].type;
+            n[i+1].c1 = separator[i].c1;
+            n[i+1].c2 = separator[i].c2;
+            return 2;
+        }
+        n[0].type = JIS83;
+        n[0].c1 = c[0].c1;
+        n[0].c2 = c[0].c2;
+        n[1].type = OTHER;
+        n[1].c1 = 0;
+        n[1].c2 = 0;
+        return 2;
+    } else if ((c[0].c1 = 0xa1) &&
+               ((c[0].c2 == 0xbc) || (c[0].c2 == 0xab) || (c[0].c2 == 0xab))) {
+        n[0].type = JIS83;
+        n[0].c1 = c[0].c1;
+        n[0].c2 = c[0].c2;
+        n[1].type = OTHER;
+        n[1].c1 = 0;
+        n[1].c2 = 0;
+        return 1;
     } else {
-	wo_mode = 0;
-	separator_out = 0;
-	n[0].type = OTHER;
-	n[0].c1 = 0;
-	n[0].c2 = 0;
-	return 1;
+        if ((c[0].c1 == 0xa1) &&
+            ((c[0].c2 == 0xb5) || (c[0].c2 == 0xb6))) { /* odoriji hiragana */
+            n[0].type = JIS83;
+            n[0].c1 = c[0].c1;
+            n[0].c2 = c[0].c2;
+            n[1].type = OTHER;
+            n[1].c1 = 0;
+            n[1].c2 = 0;
+            wo_mode = 0;
+            return 1;
+        }
+        wo_mode = 0;
+        separator_out = 0;
+        n[0].type = OTHER;
+        n[0].c1 = 0;
+        n[0].c2 = 0;
+        return 1;
     }
 }
-#endif /* WAKATIGAKI */
+
+#endif  /* WAKATIGAKI */

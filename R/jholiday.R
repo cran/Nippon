@@ -1,5 +1,5 @@
 ### Susumu Tanimura <aruminat@gmail.com>
-### Time-stamp: <2013-02-21 12:41:29 umusus>
+### Time-stamp: <2015-06-24 17:16:11 umusus>
 ### This code was inspired by and refferrd to VBA macro at
 ### http://www.h3.dion.ne.jp/~sakatsu/holiday_logic3.htm
 
@@ -86,6 +86,11 @@ jholiday <- function(year, holiday.names = TRUE){
   }
 
   ## ====== August ==========
+  # Mountain Day
+  if(year >= 2016){
+    d <- .fixedDate("08-11", "Mountain Day")
+  }
+  
   ## ====== September ==========
   # Autumnal Equinox Day
   aed <- as.Date(paste(year, "09", .Shubun(year), sep = "-"))

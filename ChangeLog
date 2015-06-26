@@ -1,3 +1,17 @@
+2015-06-26 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.6.1
+	* Backported libhh2.c from re-kakasi.git 
+2015-06-25 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.6
+	* Removed Sys.kakasi()
+	* Revised kakasi.Rd
+2015-06-24 Susumu Tanimura <aruminat@gmail.com>
+	* Added new Mountain Day (Aug 11) into jholiday() 
+	* Expanded zen2han() to support punctuation marks and other special symbols
+	* Added sp package in NAMESPACE
+	* Fixed example in JapanPrefecturesMap.Rd
+	* Updated libkakasi from 2.3.5pre1 to 2.3.6
+	* Fixed jyear.Rd: removed link to epicalc package
 2013-07-26 Susumu Tanimura <aruminat@gmail.com>
 	* version 0.5.3
 	* Fixed inst/shapes/jpn.* for JapanPrefecturesMap()

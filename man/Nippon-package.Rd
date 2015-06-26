@@ -2,18 +2,18 @@
 \alias{Nippon-package}
 \alias{Nippon}
 \docType{package}
-\title{Japanese utility functions and data}
+\title{Japanese Utility Functions and Data}
 \description{
-This package provides some Japanese utility functions and data, which
-may be useful not only for Japanese R users but for the English-speaking
-world.
+Japan-specific data is sometimes too unhandy for R users to manage. The
+utility functions and data in this package disencumber us from such an
+unnecessary burden.
 }
 \details{
 \tabular{ll}{
 Package: \tab Nippon\cr
 Type: \tab Package\cr
-Version: \tab 0.5.3\cr
-Date: \tab 2013-07-26\cr
+Version: \tab 0.6.1\cr
+Date: \tab 2015-06-26\cr
 License: \tab GPL (>=2)\cr
 }
 To avoid troubles with Japanese strings, non-ASCII Japanese characters

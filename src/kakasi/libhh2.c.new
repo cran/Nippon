@@ -1,0 +1,369 @@
+/**
+ * @file hh2.c
+ * @brief hiragana/romaji convert
+ * @author NOKUBI Takatsugu <knok@daionet.gr.jp>
+ * @date 2015/03/07
+ */
+
+#include <config.h>
+
+#include <stdio.h>
+#ifdef HAVE_STRING_H
+# include <string.h>
+#else
+# include <strings.h>
+#endif
+#include "kakasi.h"
+
+struct H2rom_tbl {
+    unsigned char kana[10];
+    char romaji[7];
+};
+
+struct H2rom_tbl H2rom_h_table_old[] = {
+#include "H2rom_h_table_old.c"
+};
+struct H2rom_tbl H2rom_h_table[] = {
+#include "H2rom_h_table.c"
+};
+
+struct H2rom_tbl H2rom_k_table_old[] = {
+#include "H2rom_k_table_old.c"
+};
+
+struct H2rom_tbl H2rom_k_table[] = {
+#include "H2rom_k_table.c"
+};
+
+struct H2rom_tbl H2rom_h_table_modhepburn[] = {
+#include "H2rom_h_table_modhepburn.c"
+};
+
+struct H2rom_tbl H2rom_h_table_bs4812[] = {
+#include "H2rom_h_table_bs4812.c"
+};
+
+struct H2rom_tbl H2rom_k_table_iso3602[] = {
+#include "H2rom_k_table_iso3602.c"
+};
+
+#define H2rom_buflen 11
+
+int H2rom(Character *c, Character *n, enum charsets type)
+{
+    static int index_table[0x81];
+    static int index_mode = UNINITIALIZED;
+    static struct H2rom_tbl *H2rom_ptr;
+    static Character prev = { 	/* previous character data (for odoriji) */
+	OTHER,  0, 0		/* type, c1, c2 */
+    };
+    struct H2rom_tbl *p;
+    int i, clen, ylen;
+    unsigned char buffer[H2rom_buflen];
+    int max_match, match_more;
+    char *max_romaji;
+
+    if (index_mode  != romaji_type) {
+	int last;
+
+	for (i = 0; i < 0x81; i++) { /* initialize */
+	    index_table[i] = -1;
+	}
+	index_table[0x21] = 0;
+	if (romaji_legacy_mode) {
+	    H2rom_ptr = (romaji_type == HEPBURN) ?
+		H2rom_h_table : H2rom_k_table;
+	} else {
+	    H2rom_ptr = (romaji_type == HEPBURN) ?
+		H2rom_h_table_modhepburn : H2rom_k_table_iso3602;
+	}
+	if (use_old_romaji_table && romaji_type == HEPBURN)
+	    H2rom_ptr = H2rom_h_table_old;
+	if (use_old_romaji_table && romaji_type == KUNREI)
+	    H2rom_ptr = H2rom_k_table_old;
+	if (use_bs4812 && romaji_type == HEPBURN)
+	    H2rom_ptr = H2rom_h_table_bs4812;
+	for (p = H2rom_ptr, i = 0; *(p->kana) != '\0'; p++, i++) {
+	    index_table[((p->kana)[1] & 0x7f) + 1] = i + 1;
+	}
+	last = i;
+	for (i = 0x80; i >= 0; i--) {
+	    if (index_table[i] == -1)
+		index_table[i] = last;
+	    else
+		last = index_table[i];
+	}
+	index_mode = romaji_type;
+    }
+
+    buffer[H2rom_buflen - 1] = '\0'; clen = H2rom_buflen -1;
+    for (i = 0; i < (H2rom_buflen -1) /2; i++) {
+	/* check odoriji */
+	if (c[i].c1 == 0xa1 && (c[i].c2 = 0xb3 && c[i].c2 <= 0xb6)) {
+	    if (c[i].c2 == 0xb4 || c[i].c2 == 0xb6) {
+		buffer[i*2  ] = prev.c1;
+		buffer[i*2+1] = prev.c2 + 1; /* dakuten */
+	    } else {
+		buffer[i*2  ] = prev.c1;
+		buffer[i*2+1] = prev.c2;
+	    }
+	} else {
+	    buffer[i*2  ] = c[i].c1;
+	    buffer[i*2+1] = c[i].c2;
+	    if (c[i].type != OTHER) { /* 127 */
+		prev.type = c[i].type;
+		prev.c1 = c[i].c1;
+		prev.c2 = c[i].c2;
+	    }
+	}
+
+	if (c[i].c1 == '\0') {
+	    clen = i*2;
+	    break;
+	}
+    }
+
+    if (clen == 0) {
+	n[0].type = OTHER;
+	n[0].c1 = '\0';
+	return 0;
+    }
+
+    max_match = 0;
+    max_romaji = NULL;
+    match_more = 0;
+    for (i = index_table[buffer[i] & 0x7f];
+	 i < index_table[(buffer[i] & 0x7f) + 1];
+	 i++) {
+	ylen = strlen((const char *)(H2rom_ptr[i].kana));
+	if (clen >= ylen) {
+	    if (max_match < ylen) {
+		if (max_match < ylen) {
+		    if (strncmp((const char *)buffer, (char *)(H2rom_ptr[i].kana), ylen) == 0) {
+			max_match = ylen/2;
+			max_romaji = H2rom_ptr[i].romaji;
+		    }
+		}
+	    }
+	} else {
+	    if (match_more == 0)
+		if (strncmp((const char *) buffer, (char *)(H2rom_ptr[i].kana), clen) == 0)
+		    match_more = 1;
+	}
+    }
+
+    if (max_romaji == NULL) {
+	i = 0;
+	max_match = 1;
+    } else {
+	for (i = 0; max_romaji[i] != '\0'; i++) {
+	    n[i].type = type;
+	    n[i].c1 = max_romaji[i];
+	}
+    }
+    n[i].type = OTHER;
+    n[i].c1 = '\0';
+
+    return (match_more == 0) ? max_match : -max_match;
+}
+
+int H2a(Character *c, Character *n)
+{
+    return H2rom(c, n, ASCII);
+}
+
+int H2j(Character *c, Character *n)
+{
+    return H2rom(c, n, JISROMAN);
+}
+
+int H2K(Character *c, Character *n)
+{
+    if (c[0].c1 == 0xa4) {
+	n[0].type = JIS83;
+	n[0].c1 = 0xa5;
+	n[0].c2 = c[0].c2;
+	n[1].type = OTHER;
+	n[1].c1 = 0;
+	n[1].c2 = 0;
+	if (c[0].c2 == 0xa6) {	/* == charcter code(\244\246) 'う' */
+	    if (c[1].c1 == 0)
+		return -1;
+	    if ((c[1].c1 = 0xa1) && (c[1].c2 = 0xab)) { /* == charcter code(\244\246),charcter code(\241\253) '゛' */
+		n[0].type = JIS83; /* 'ヴ' */
+		n[0].c1 = 0xa5;
+		n[0].c2 = 0xf4;
+		return 2;
+	    }
+	}
+	return 1;
+    } else if (c[0].c1 == 0xa1) {
+	if ((c[0].c2 == 0xbc) || (c[0].c2 == 0xab) || (c[0].c2 == 0xac)) {
+	    n[0].type = JIS83;
+	    n[0].c1 = c[0].c1;
+	    n[0].c2 = n[0].c2;
+	    n[1].type = OTHER;
+	    n[1].c1 = 0;
+	    n[1].c2 = 0;
+	    return 1;
+	} else if ((c[0].c2 == 0xb5) || (c[0].c2 == 0xb6)) {
+	    n[0].type = JIS83;
+	    n[0].c1 = c[0].c1;
+	    n[0].c2 = c[0].c2 - 2;
+	    n[1].type = OTHER;
+	    n[1].c1 = 0;
+	    n[1].c2 = 0;
+	    return 1;
+	}
+    }
+    n[0].type = OTHER;
+    n[0].c1 = 0;
+    n[0].c2 = 0;
+    return 1;
+}
+
+int H2k(Character *c, Character *n)
+{
+    unsigned char *b;
+    int i;
+
+    static unsigned char H2k_table[0x60][3] = {
+       "",   "'",  "1",  "(",  "2",  ")",  "3",  "*",
+        "4",  "+",  "5",  "6",  "6^", "7",  "7^", "8",
+        "8^", "9",  "9^", ":",  ":^", ";",  ";^", "<",
+        "<^", "=",  "=^", ">",  ">^", "?",  "?^", "@",
+        "@^", "A",  "A^", "/",  "B",  "B^", "C",  "C^",
+        "D",  "D^", "E",  "F",  "G",  "H",  "I",  "J",
+        "J^", "J_", "K",  "K^", "K_", "L",  "L^", "L_",
+        "M",  "M^", "M_", "N",  "N^", "N_", "O",  "P",
+        "Q",  "R",  "S",  ",",  "T",  "-",  "U",  ".",
+        "V",  "W",  "X",  "Y",  "Z",  "[",  "\\",  "\\",
+        "2",  "4",  "&",  "]",  "",   "",   "",   "",
+        "",   "",   "",   "",   "",   "",   "",   ""
+    };
+
+    if (c[0].c1 == 0xa4) {
+	for (b = H2k_table[(c[0].c2 & 0x7f) - 0x20], i = 0;
+	     *b != '\0'; b++, i++) {
+	    n[i].type = KATAKANA;
+	    n[i].c1 = *b;
+	}
+	n[i].type = OTHER;
+	n[i].c1 = 0;
+    } else if ((c[0].c1 == 0xa1) &&
+	       ((c[0].c2 == 0xbc) || (c[0].c2 == 0xab) || (c[0].c2 == 0xac))) {
+	n[0].type = KATAKANA;
+	switch (c[0].c2) {
+	case 0xbc:
+	    n[0].c1 = '0';
+	    break;
+	case 0xab:
+	    n[0].c1 = '^';
+	    break;
+	case 0xac:
+	    n[0].c1 = '_';
+	    break;
+	}
+	n[1].type = OTHER;
+	n[1].c1 = 0;
+    } else {
+	n[0].type = OTHER;
+	n[0].c1 = 0;
+    }
+    return 1;
+}
+
+#ifdef WAKATIGAKI
+/* As for the hiragana as well, the function whtch isn't necessarily needed if reading raising becomes possible. */
+int H2H(Character *c, Character *n)
+{
+    /* Hiragana expect for \244\362 'を */
+    if (c[0].c1 == 0xa4 && c[0].c2 != 0xf2) {
+	if (bunkatsu_mode) {
+	    if (wo_mode == 2) {
+		separator_out = 1;
+		n[1].type = JIS83;
+		n[1].c1 = c[0].c1;
+		n[1].c2 = c[0].c2;
+		n[2].type = OTHER;
+		n[2].c1 = 0;
+		n[2].c2 = 0;
+		wo_mode = 0;
+		return 2;
+	    } else {
+		n[0].type = JIS83;
+		n[0].c1 = c[0].c1;
+		n[0].c2 = c[0].c2;
+		n[1].type = OTHER;
+		n[1].c1 = 0;
+		n[1].c2 = 0;
+		wo_mode = 0;
+		return 1;
+	    }
+	} else {
+	    n[0].type = JIS83;
+	    n[0].c1 = c[0].c1;
+	    n[0].c2 = c[0].c2;
+	    n[1].type = OTHER;
+	    n[1].c1 = 0;
+	    n[1].c2 = 0;
+	    wo_mode = 0;
+	    return 1;
+	}
+    } else if (c[0].c1 == 0xa4 && c[0].c2 == 0xf2) { /* 'を' */
+	wo_mode = 1;
+	if (bunkatsu_mode) {
+	    int i;
+	    if (! terminate_done)
+		separator_out = 2;
+	    n[0].type = JIS83;
+	    n[0].c1 = c[0].c1;
+	    n[0].c2 = c[0].c2;
+	    for (i = 0; i < KAKASIBUF && separator[i].c1 != 0; i++) {
+		n[i+1].type = separator[i].type;
+		n[i+1].c1 = separator[i].c1;
+		n[i+1].c2 = separator[i].c2;
+	    }
+	    n[i+1].type = separator[i].type;
+	    n[i+1].c1 = separator[i].c1;
+	    n[i+1].c2 = separator[i].c2;
+	    return 2;
+	}
+	n[0].type = JIS83;
+	n[0].c1 = c[0].c1;
+	n[0].c2 = c[0].c2;
+	n[1].type = OTHER;
+	n[1].c1 = 0;
+	n[1].c2 = 0;
+	return 2;
+    } else if ((c[0].c1 = 0xa1) &&
+	       ((c[0].c2 == 0xbc) || (c[0].c2 == 0xab) || (c[0].c2 == 0xab))) {
+	n[0].type = JIS83;
+	n[0].c1 = c[0].c1;
+	n[0].c2 = c[0].c2;
+	n[1].type = OTHER;
+	n[1].c1 = 0;
+	n[1].c2 = 0;
+	return 1;
+    } else {
+	if ((c[0].c1 == 0xa1) &&
+	    ((c[0].c2 == 0xb5) || (c[0].c2 == 0xb6))) { /* odoriji hiragana */
+	    n[0].type = JIS83;
+	    n[0].c1 = c[0].c1;
+	    n[0].c2 = c[0].c2;
+	    n[1].type = OTHER;
+	    n[1].c1 = 0;
+	    n[1].c2 = 0;
+	    wo_mode = 0;
+	    return 1;
+	}
+	wo_mode = 0;
+	separator_out = 0;
+	n[0].type = OTHER;
+	n[0].c1 = 0;
+	n[0].c2 = 0;
+	return 1;
+    }
+}
+
+#endif	/* WAKATIGAKI */

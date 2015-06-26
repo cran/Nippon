@@ -1,4 +1,5 @@
 useDynLib(Nippon)
 exportPattern("^[^\\.]")
 import(maptools)
+importFrom("sp", CRS, coordinates)
 

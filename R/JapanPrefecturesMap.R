@@ -1,5 +1,5 @@
 ### Susumu Tanimura <aruminat@gmail.com>
-### Time-stamp: <2013-02-26 13:56:15 umusus>
+### Time-stamp: <2015-06-24 19:20:49 umusus>
 ### Draw very simplified Japan map with prefecture boundaries.
 
 JapanPrefecturesMap <- function(col = NULL, inset = TRUE, ...){

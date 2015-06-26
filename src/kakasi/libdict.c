@@ -1,6 +1,6 @@
 /*
  * KAKASI (Kanji Kana Simple inversion program)
- * $Id: dict.c,v 1.12 2013-02-20 05:36:43 knok Exp $
+ * $Id: dict.c,v 1.13 2014-02-13 07:30:35 knok Exp $
  * Copyright (C) 1992
  * Hironobu Takahashi (takahasi@tiny.or.jp)
  *
@@ -45,7 +45,7 @@
 #ifdef HAVE_STDINT_H
 # include <stdint.h>
 #else
-#define uintptr_t (int)
+typedef int uintptr_t;
 #endif
 #include "kakasi.h"
 

@@ -1,16 +1,16 @@
 Package: Nippon
 Type: Package
-Title: Japanese utility functions and data
-Version: 0.5.3
-Date: 2013-07-26
+Title: Japanese Utility Functions and Data
+Version: 0.6.1
+Date: 2015-06-26
 Author: Susumu Tanimura <aruminat@gmail.com>
 Maintainer: Susumu Tanimura <aruminat@gmail.com>
-Depends: maptools
+Depends: maptools, sp
 Suggests: RColorBrewer, foreign
-Description: This package provides some Japanese utility functions and data, which may be useful for Japanese R users.
+Description: Japan-specific data is sometimes too unhandy for R users to manage. The utility functions and data in this package disencumber us from such an unnecessary burden. 
 License: GPL (>= 2)
 Encoding: UTF-8
-Packaged: 2013-07-26 12:28:02 UTC; umusus
 NeedsCompilation: yes
+Packaged: 2015-06-26 01:22:11 UTC; umusus
 Repository: CRAN
-Date/Publication: 2013-07-26 16:40:48
+Date/Publication: 2015-06-26 10:49:57

@@ -60,9 +60,9 @@ Susumu Tanimura \email{aruminat@gmail.com}
 
 \examples{
 if (require(RColorBrewer)) {
-  cols <- rev(brewer.pal(12,"Set2"))
+  cols <- rev(brewer.pal(8,"Set2"))
 }else{
-  cols <- gray.colors(12)
+  cols <- gray.colors(8)
 }
 JapanPrefecturesMap(col = cols, axes = TRUE)
 

@@ -1,6 +1,6 @@
 ## configure.ac for Nippon package
 ## Susumu Tanimura <aruminat@gmail.com>
-## Time-stamp: <2013-04-08 17:49:50 umusus>
+## Time-stamp: <2015-06-26 09:52:25 umusus>
 
 define([pkgversion], esyscmd([sh -c "grep Version: DESCRIPTION | cut -d' ' -f2 | tr -d '\n'"]))
 
@@ -84,7 +84,7 @@ AC_MSG_RESULT($eachyomi)
 test "${eachyomi}" = yes && AC_DEFINE(EACH_YOMI, 1, [EACH_YOMI])
 dnl ========= end of import ===========================
 ### Since rkakasi.c support utf-8, utf8 conversion function in kakasi is killed.
-AC_DEFINE(VERSION, "2.3.5pre1")
+AC_DEFINE(VERSION, "2.3.6", [rkakasi_VERSION])
 
 INLIBS="${LIBS}"
 INCPPFLAGS="${CPPFLAGS}"

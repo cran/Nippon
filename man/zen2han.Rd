@@ -6,15 +6,15 @@
 }
 \description{
 This function is to convert Japanese characters from fullwidth (zenkaku) to halfwidth
-(hankaku) forms for avoding trouble in Japanese string operation.
+(hankaku) forms for avoiding trouble in Japanese string operation.
 }
 \usage{
-zen2han(x)
+zen2han(s)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-A character vecter.
+  \item{s}{
+A character vector.
 }
 }
 \details{
@@ -26,10 +26,9 @@ matching or searching where the two forms of alphabets, numbers, and
 symbols are mixed in. Thus, the character data should be sanitized with this
 function.
 
-The targeted zenkaku characters are shown with zenkaku constant built
-into \pkg{Nippon} package: only alphabets and numbers. Katakana is not
-the target of \code{zen2han} because the halfwidth Katakana is rather a
-troublemaker.
+The targeted zenkaku characters are numbers, alphabets, punctuation
+marks, and other special symbols. Katakana is not the target of
+\code{zen2han} because the halfwidth Katakana is rather a troublemaker.
 }
 
 \value{

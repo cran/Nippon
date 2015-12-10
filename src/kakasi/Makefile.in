@@ -1,6 +1,6 @@
 ### Makefile.in for libkakasi bundled in Nippon package
 ### Susumu Tanimura <aruminat@gmail.com>
-### Time-stamp: <2013-04-08 18:06:48 umusus>
+### Time-stamp: <2015-12-10 14:24:39 umusus>
 
 build_triplet = @build@
 host_triplet = @host@
@@ -43,7 +43,7 @@ all: libkakasi.a
 ##@echo Dicts are $(kanwadict) $(itaijidict)
 
 libkakasi.a: $(OBJECTS)
-	$(AR) cru $@ $^ 
+	$(AR) cr $@ $^ 
 	$(RANLIB) $@
 
 clean:

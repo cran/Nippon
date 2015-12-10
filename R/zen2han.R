@@ -1,7 +1,8 @@
 zen2han <- function(s){
-    if(Sys.info()["sysname"] == "Windows"){
-        s <- iconv(s, from = "CP932", to = "UTF-8")
-    }
+    ## if(localeToCharset()[1] == "CP932" && substitute(s) != "zenkaku"){
+    ##     s <- iconv(unlist(s), from = "CP932", to = "UTF-8")
+    ## }
+    if(Encoding(s) != "UTF-8")  s <- iconv(s, from = "", to = "UTF-8")
     s <- paste(s, sep='', collapse='')
     y <- sapply(unlist(strsplit(s, split = "")), function(x){
         i <- utf8ToInt(x)

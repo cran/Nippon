@@ -14,7 +14,7 @@ zen2han(s)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{s}{
-A character vector.
+A character vector. UTF-8 encoding is preferable.
 }
 }
 \details{
@@ -48,7 +48,7 @@ Susumu Tanimura \email{aruminat@gmail.com}
 
 \examples{
 zenkaku
-zen2han(zenkaku)
+zen2han(as.character(zenkaku))
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the

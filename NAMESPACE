@@ -1,5 +1,9 @@
 useDynLib(Nippon)
 exportPattern("^[^\\.]")
 import(maptools)
-importFrom("sp", CRS, coordinates)
+importFrom("sp", CRS, coordinates, plot)
+importFrom("graphics", lines)
+importFrom("grDevices", palette)
+importFrom("utils", localeToCharset)
+
 

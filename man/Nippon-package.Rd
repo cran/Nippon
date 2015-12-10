@@ -12,8 +12,8 @@ unnecessary burden.
 \tabular{ll}{
 Package: \tab Nippon\cr
 Type: \tab Package\cr
-Version: \tab 0.6.1\cr
-Date: \tab 2015-06-26\cr
+Version: \tab 0.6.3\cr
+Date: \tab 2015-12-10\cr
 License: \tab GPL (>=2)\cr
 }
 To avoid troubles with Japanese strings, non-ASCII Japanese characters

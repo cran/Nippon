@@ -1,3 +1,12 @@
+2015-12-10 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.6.3
+	* Revised kakasi/Makefile.in for Fedora 22
+	* Revised zen2han.Rd
+	* Fixed zen2han
+	* Revised Author in DESCRIPTION for copyright holders
+2015-06-30 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.6.2
+	* Fixed error in zen2han() for windows
 2015-06-26 Susumu Tanimura <aruminat@gmail.com>
 	* version 0.6.1
 	* Backported libhh2.c from re-kakasi.git 

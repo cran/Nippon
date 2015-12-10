@@ -1,6 +1,6 @@
-0a2e7d43ad9e8f7de5bbaad98dd7d130 *ChangeLog
-690469628042ba5e3b7067b81346aa04 *DESCRIPTION
-7d9a68264d57a3fbd4c41a267c0231ba *NAMESPACE
+ac202a8ae96d566f9c4a5f51c19ebe32 *ChangeLog
+1e0b4a4e87c87c4b5736fca2f9d8c2e3 *DESCRIPTION
+3326171414deb556e2c96dad0310db65 *NAMESPACE
 fa1931c26f91cba8d34dc51cae1e238e *R/JapanPrefecturesMap.R
 7903ea3dda184e5819eb82b09678977d *R/jholiday.R
 f46813afab026700b13c12f753900ec1 *R/jiscolor.R
@@ -9,8 +9,8 @@ bc7ea51a9dc769386ae105353dc92166 *R/jyear.R
 b79c07292286490b4e119157007bf327 *R/romanization.R
 938bc8e9d358267d8b65bb2767608f26 *R/sjis2utf8.R
 9403be81b4fb43bebb22f1ffae34b408 *R/sysdata.rda
-52154fa074d3f40611311bb63aab9705 *R/zen2han.R
-d402be6a1215ac8b1f4c0816e04f1e6b *R/zzz.R
+7389ea82a1ee01e0557c5a8d31aac528 *R/zen2han.R
+338f380d8a6e4a8cbb8be4e114c74add *R/zzz.R
 f016f47247f8400d9cdd470cd79f918b *TODO
 d17f80657e287b61db6ba2df990c5545 *cleanup
 327b4541392ece6de8649e22f05dd765 *cleanup.win
@@ -32,7 +32,7 @@ c57bab28a8b53120ffd29b6741693a38 *inst/shapes/jpn.dbf
 677dfe597e631bcc4ebfccb749d896e0 *man/JapanPrefecturesMap.Rd
 e1e3c1a8f072fdd0a320a2e368386d54 *man/JapaneseColors.Rd
 137f51586bcf5c7a0fd6633d72f5ee35 *man/Nippon-internal.Rd
-ea74d2feac04eb68ffec609d4fec7f4c *man/Nippon-package.Rd
+94e52afaaacb8e85f35ed11fc3305aaa *man/Nippon-package.Rd
 3f26a208b96bff364ce889cd114d4234 *man/jholiday.Rd
 c2423bdee100e64868789d047a697518 *man/jyear.Rd
 0c86ef2e8e4c6ce0433b4a89f2a2a921 *man/kakasi.Rd
@@ -42,13 +42,13 @@ f1cc8b7bd6026ca0f706ba2e97d8be9d *man/nippon.palette.Rd
 32c4ac3af24e8f7491c2572da35758ad *man/prefectures.Rd
 3777708b8701bb6c3b63ad7e6555a01c *man/romanization.Rd
 51bee169c0a2ce49814b634c4d6901b1 *man/sjis2utf8.Rd
-a16d8173652981ead581eaffd99e2166 *man/zen2han.Rd
+a664ab44bfe521fc37935699d60ee7c9 *man/zen2han.Rd
 adef7ded910ca0f34370e5898b37ed82 *po/R-Nippon.pot
 5277bd4b944af6f6f77d35648f4a92be *po/R-ja.po
 b76863017f9d20760bc9ca0d845a7d23 *src/Makevars.in
 ea829446edccd8bae1d2fca2c6d64887 *src/Makevars.win
-e6b085ae188b3e21171295981e75b91f *src/kakasi/Makefile.in
-82c08da5cab01b5efb9eff5699af79e4 *src/kakasi/Makefile.win
+a6f8fca96663772864cd1d43afd0d387 *src/kakasi/Makefile.in
+8236177a2c45db0f74eb32a6dc8d6515 *src/kakasi/Makefile.win
 6f78967339bfdaea9c028d21945ad076 *src/kakasi/config.h.in
 8ca80483d60d1e16ab7fb37153631f7f *src/kakasi/kakasi.def
 ef3ba91472fd5d32ffeea95c4e959e0f *src/kakasi/kakasi.h

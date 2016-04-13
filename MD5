@@ -1,5 +1,5 @@
 ac202a8ae96d566f9c4a5f51c19ebe32 *ChangeLog
-1e0b4a4e87c87c4b5736fca2f9d8c2e3 *DESCRIPTION
+2b3b27aa3713ad357b42c50f30d5f415 *DESCRIPTION
 3326171414deb556e2c96dad0310db65 *NAMESPACE
 fa1931c26f91cba8d34dc51cae1e238e *R/JapanPrefecturesMap.R
 7903ea3dda184e5819eb82b09678977d *R/jholiday.R
@@ -46,9 +46,9 @@ a664ab44bfe521fc37935699d60ee7c9 *man/zen2han.Rd
 adef7ded910ca0f34370e5898b37ed82 *po/R-Nippon.pot
 5277bd4b944af6f6f77d35648f4a92be *po/R-ja.po
 b76863017f9d20760bc9ca0d845a7d23 *src/Makevars.in
-ea829446edccd8bae1d2fca2c6d64887 *src/Makevars.win
+cb1a7a0dd962df1d06045c798f43ac3a *src/Makevars.win
 a6f8fca96663772864cd1d43afd0d387 *src/kakasi/Makefile.in
-8236177a2c45db0f74eb32a6dc8d6515 *src/kakasi/Makefile.win
+11764ffccd783e36cf8a0bb4378aa00e *src/kakasi/Makefile.win
 6f78967339bfdaea9c028d21945ad076 *src/kakasi/config.h.in
 8ca80483d60d1e16ab7fb37153631f7f *src/kakasi/kakasi.def
 ef3ba91472fd5d32ffeea95c4e959e0f *src/kakasi/kakasi.h

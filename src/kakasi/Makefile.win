@@ -56,8 +56,7 @@ all: libkakasi.a
 
 libkakasi.a: $(OBJECTS)
 	$(AR) cr $@ $^ 
-#	$(RANLIB) $@
-	ranlib $@
+	$(RANLIB) $@
 
 clean:
 	rm -rf libkakasi.a *.lo *.o

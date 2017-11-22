@@ -1,7 +1,4 @@
 zen2han <- function(s){
-    ## if(localeToCharset()[1] == "CP932" && substitute(s) != "zenkaku"){
-    ##     s <- iconv(unlist(s), from = "CP932", to = "UTF-8")
-    ## }
     if(Encoding(s) != "UTF-8")  s <- iconv(s, from = "", to = "UTF-8")
     s <- paste(s, sep='', collapse='')
     y <- sapply(unlist(strsplit(s, split = "")), function(x){
@@ -14,12 +11,19 @@ zen2han <- function(s){
     })
     return(paste(y, collapse = ""))
 }
-## Old function
-## zen2han <-
-## function(x){
-##   paste2 <- function(x,...){paste(x,...,sep='',collapse='')}
-##   zen <- paste(unlist(zenkaku),collapse='')
-##   han <- paste2(paste2(0:9),paste2(letters),paste2(LETTERS))
-##   return(chartr(zen,han,x))
-## }
+
+sanitizeZenkaku <-function(s){
+    stopifnot(is.character(s))
+    if(Encoding(s[1]) != "UTF-8")  s <- iconv(s, from = "", to = "UTF-8")
+    zenEisu <- paste0(intToUtf8(65295 + 1:10), intToUtf8(65312 + 1:26),
+                      intToUtf8(65344 + 1:26))
+    zenKigo <- c(65281, 65283, 65284, 65285, 65286, 65290, 65291,
+                 65292, 12540, 65294, 65295, 65306, 65307, 65308,
+                 65309, 65310, 65311, 65312, 65342, 65343, 65372,
+                 65374)
+    s <- chartr(zenEisu,"0-9A-Za-z", s)
+    s <- chartr(intToUtf8(zenKigo), '!#$%&*+,-./:;<=>?@^_`|~', s)
+    s <- gsub(intToUtf8(12288), "", s)
+    return(s)
+}
 

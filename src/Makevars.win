@@ -1,5 +1,5 @@
 
-OBJECTS = rkakasi.o
+OBJECTS = rkakasi.o init.o
 ## PKG_CFLAGS = 
 PKG_LIBS = kakasi/libkakasi.a 
 

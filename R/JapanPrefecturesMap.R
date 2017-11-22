@@ -1,11 +1,12 @@
 ### Susumu Tanimura <aruminat@gmail.com>
-### Time-stamp: <2015-06-24 19:20:49 umusus>
+### Time-stamp: <2017-11-23 00:32:33 umusus>
 ### Draw very simplified Japan map with prefecture boundaries.
 
 JapanPrefecturesMap <- function(col = NULL, inset = TRUE, ...){
   m <- readShapePoly(system.file("shapes/jpn.shp", package="Nippon")[1],
   proj4string = CRS("+proj=longlat +datum=WGS84"))
-  if(inset){
+##    m <- st_read(system.file("shapes/jpn.shp", package="Nippon")[1])
+    if(inset){
     xy.okinawa <- m@polygons[[47]]@Polygons[[1]]@coords
     xy.okinawa[, 1] <- xy.okinawa[, 1] + 7
     xy.okinawa[, 2] <- xy.okinawa[, 2] + 14

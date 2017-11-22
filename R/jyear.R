@@ -1,5 +1,5 @@
 ### Susumu Tanimura <aruminat@gmail.com>
-### Time-stamp: <2011-02-19 21:43:29 umusus>
+### Time-stamp: <2017-11-22 23:22:37 umusus>
 ### jyear
 
 jyear <- function(x,shift=FALSE,withAD=FALSE,ascii=FALSE){
@@ -40,3 +40,20 @@ jyear <- function(x,shift=FALSE,withAD=FALSE,ascii=FALSE){
   return(res)
 }
 
+wareki2AD <- function(year){
+    stopifnot(is.character(year))
+    y <- str_extract(year, '[0-9]+')
+    y <- as.integer(y)
+    w <- str_extract(kakasi(year),'[a-z]+')
+    addy <- function(w, y){
+        r <- switch(w,
+                    "meiji" = y + 1867,
+                    "taishou" = y + 1911,
+                    "shouwa" = y + 1925,
+                    "heisei" = y + 1988,
+                    message("unsupported Japanese imperial year."))
+        return(r)
+    }
+    res <- mapply(addy, w, y)
+    return(unname(res))
+}

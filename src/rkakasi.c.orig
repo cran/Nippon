@@ -9,7 +9,6 @@
 #include <Rinternals.h>
 #include <R_ext/Riconv.h>
 
-
 SEXP rkakasi(SEXP x, SEXP k)
 {
 	/* 環境変数の設定 */
@@ -87,4 +86,3 @@ SEXP rkakasi(SEXP x, SEXP k)
 	UNPROTECT(2);
 	return Rf_ScalarString(mkChar(text2));
 }
-

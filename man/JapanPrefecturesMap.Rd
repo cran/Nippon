@@ -59,6 +59,7 @@ Susumu Tanimura \email{aruminat@gmail.com}
 }
 
 \examples{
+\dontrun{
 if (require(RColorBrewer)) {
   cols <- rev(brewer.pal(8,"Set2"))
 }else{
@@ -80,7 +81,7 @@ pos <- legend("bottomright", legend = format(idx, scientific = 10, big.mark = ",
 symbols(pos$text$x - 1, pos$text$y, circles = sqrt(idx / 1e+7 / (2 * pi)),
     inches = FALSE, fg = col[1], bg = col[2], add = TRUE)
 par(op)
-
+}
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the

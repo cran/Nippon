@@ -1,3 +1,12 @@
+2017-11-22 Susumu Tanimura <aruminat@gmail.com>
+	* version 0.6.4
+	* Added new functions, sanitizeZenkau() and wareki2AD()
+	* Added src/init.c for registration
+2016-04-13 Susumu Tanimura <aruminat@gmail.com>
+	* Fixed Makefile.win and Makevars.win for toolchains changed under
+	Windows (suggested by Dr. Uwe Ligges)
+2015-12-11 Susumu Tanimura <aruminat@gmail.com>
+	* Fixed NAMESPACE
 2015-12-10 Susumu Tanimura <aruminat@gmail.com>
 	* version 0.6.3
 	* Revised kakasi/Makefile.in for Fedora 22

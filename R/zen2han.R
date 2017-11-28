@@ -22,8 +22,23 @@ sanitizeZenkaku <-function(s){
                  65309, 65310, 65311, 65312, 65342, 65343, 65372,
                  65374)
     s <- chartr(zenEisu,"0-9A-Za-z", s)
-    s <- chartr(intToUtf8(zenKigo), '!#$%&*+,-./:;<=>?@^_`|~', s)
+    s <- chartr(intToUtf8(zenKigo), '!#$%&*+,-./:;<=>?@^_|~', s)
     s <- gsub(intToUtf8(12288), "", s)
     return(s)
 }
+
+han2zen <- function(s){
+    stopifnot(is.character(s))
+    zenEisu <- paste0(intToUtf8(65295 + 1:10), intToUtf8(65312 + 1:26),
+                      intToUtf8(65344 + 1:26))
+    zenKigo <- c(65281, 65283, 65284, 65285, 65286, 65290, 65291,
+                 65292, 12540, 65294, 65295, 65306, 65307, 65308,
+                 65309, 65310, 65311, 65312, 65342, 65343, 65372,
+                 65374)
+    s <- chartr("0-9A-Za-z", zenEisu, s)
+    s <- chartr('!#$%&*+,-./:;<=>?@^_|~', intToUtf8(zenKigo), s)
+    s <- gsub(" ", intToUtf8(12288), s)
+    return(s)
+}
+    
 

@@ -1,7 +1,7 @@
-b76d39b5348fc4fc0d735650c05e0497 *ChangeLog
-10dd999e36abcf0ba1f37db5733c2ce8 *DESCRIPTION
-c34f76ee8fb2ab4e406a3e73b81aa6be *NAMESPACE
-8dcb002285f371bbae545c0c254d6f24 *R/JapanPrefecturesMap.R
+5d05a4748bbdc3f8161e32c0941457e5 *ChangeLog
+2a70de6869765b857eeb0c2b8ef51670 *DESCRIPTION
+867e106cbe9936c9a478262e71c8945c *NAMESPACE
+72493848245af1db6842037d8c26249d *R/JapanPrefecturesMap.R
 7903ea3dda184e5819eb82b09678977d *R/jholiday.R
 f46813afab026700b13c12f753900ec1 *R/jiscolor.R
 420fb315a9c159a584feda6374aa8731 *R/jyear.R
@@ -9,7 +9,7 @@ f46813afab026700b13c12f753900ec1 *R/jiscolor.R
 b79c07292286490b4e119157007bf327 *R/romanization.R
 938bc8e9d358267d8b65bb2767608f26 *R/sjis2utf8.R
 9403be81b4fb43bebb22f1ffae34b408 *R/sysdata.rda
-aea3b2775ca0636f851012cd45da6d00 *R/zen2han.R
+e3e32f7d143760c8b0b3d4be5744c1b2 *R/zen2han.R
 338f380d8a6e4a8cbb8be4e114c74add *R/zzz.R
 f016f47247f8400d9cdd470cd79f918b *TODO
 d17f80657e287b61db6ba2df990c5545 *cleanup
@@ -29,7 +29,7 @@ c57bab28a8b53120ffd29b6741693a38 *inst/shapes/jpn.dbf
 3716faf496a1ea69e1f4d78c6b0fd96c *inst/shapes/jpn.shx
 364bae211846e3c3d372af43c605503e *inst/share/itaijidict
 3208a5d382161ec0caa184560e081ab3 *inst/share/kanwadict
-5505ba14ceb70389530fb0bb2166e8d7 *man/JapanPrefecturesMap.Rd
+0593fa6eb3b4491291efd4dc6041619a *man/JapanPrefecturesMap.Rd
 e1e3c1a8f072fdd0a320a2e368386d54 *man/JapaneseColors.Rd
 137f51586bcf5c7a0fd6633d72f5ee35 *man/Nippon-internal.Rd
 4ab616f5b5ec04862bbf03251c4d45c8 *man/Nippon-package.Rd
@@ -44,7 +44,7 @@ f1cc8b7bd6026ca0f706ba2e97d8be9d *man/nippon.palette.Rd
 aae069c34b7c47e2c38f97334e4eceb5 *man/sanitizeZenkaku.Rd
 51bee169c0a2ce49814b634c4d6901b1 *man/sjis2utf8.Rd
 ceb85f6e26d4059f7f8747b8568808f6 *man/wareki2AD.Rd
-a664ab44bfe521fc37935699d60ee7c9 *man/zen2han.Rd
+39eb1f63ac1601284af94b942ca97534 *man/zen2han.Rd
 adef7ded910ca0f34370e5898b37ed82 *po/R-Nippon.pot
 5277bd4b944af6f6f77d35648f4a92be *po/R-ja.po
 0bd35d42457581bf362218755f7000ed *src/Makevars.in

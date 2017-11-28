@@ -1,8 +1,8 @@
 Package: Nippon
 Type: Package
 Title: Japanese Utility Functions and Data
-Version: 0.6.4
-Date: 2017-11-22
+Version: 0.6.5
+Date: 2017-11-28
 Author: Susumu Tanimura <aruminat@gmail.com> [aut, cre],
   Hironobu Takahashi [cph],
 	Hajime Baba [cph],
@@ -14,6 +14,6 @@ Description: Japan-specific data is sometimes too unhandy for R users to manage.
 License: GPL (>= 2)
 Encoding: UTF-8
 NeedsCompilation: yes
-Packaged: 2017-11-22 17:31:40 UTC; umusus
+Packaged: 2017-11-28 02:28:12 UTC; umusus
 Repository: CRAN
-Date/Publication: 2017-11-22 18:11:19 UTC
+Date/Publication: 2017-11-28 18:21:17 UTC

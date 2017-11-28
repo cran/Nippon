@@ -1,15 +1,19 @@
 \name{zen2han}
 \alias{zen2han}
+\alias{han2zen}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Convert Japanese characters from fullwidth (zenkaku) to halfwidth
-	(hankaku) forms 
+	(hankaku) forms, and vice versa.
 }
 \description{
-This function is to convert Japanese characters from fullwidth (zenkaku) to halfwidth
-(hankaku) forms for avoiding trouble in Japanese string operation.
+This function is to convert Japanese characters between fullwidth
+(zenkaku) and halfwidth
+(hankaku) forms for avoiding trouble in Japanese string operation or for
+taking advantage of fullwidth (zenkaku) forms.
 }
 \usage{
 zen2han(s)
+han2zen(s)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -29,10 +33,18 @@ function.
 The targeted zenkaku characters are numbers, alphabets, punctuation
 marks, and other special symbols. Katakana is not the target of
 \code{zen2han} because the halfwidth Katakana is rather a troublemaker.
+
+\code{han2zen} functions reversely. This is useful for Japanese
+users to escape prohibitive characters in strings (e.g., '$' in
+a character vector).
 }
 
 \value{
-A character vector. All alphabets, numbers, and symbols have their halfwidth from.
+\code{zen2han} returns a character vector. All alphabets, numbers, and
+symbols have their halfwidth from.
+
+\code{han2zen} returns a character vector. All alphabets, numbers, and
+symbols have their fullwidth from.
 }
 \references{
 	Halfwidth and Fullwidth Forms \url{http://www.alanwood.net/unicode/halfwidth_and_fullwidth_forms.html}
@@ -44,7 +56,7 @@ Susumu Tanimura \email{aruminat@gmail.com}
 % %%  ~~further notes~~
 % }
 %% ~Make other sections like Warning with \section{Warning }{....} ~
-\seealso{\code{\link[tools:showNonASCII]{showNonASCII}}}
+\seealso{\code{han2zen}, \code{\link[tools:showNonASCII]{showNonASCII}}}
 
 \examples{
 zenkaku

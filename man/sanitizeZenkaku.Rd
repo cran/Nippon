@@ -34,7 +34,7 @@ Susumu Tanimura \email{aruminat@gmail.com}
   \code{zen2han}
 }
 \examples{
-n <- intToUtf8(c(65296 + 1:3, 12288))
+(n <- intToUtf8(c(65296 + 1:3, 12288)))
 sanitizeZenkaku(n)
 }
 

@@ -1,3 +1,12 @@
+2018-05-03  Susumu Tanimura <aruminat@gmail.com>
+	* version 0.7
+	* Revised man/sanitizeZenkaku.Rd
+	* Fixed R/zen2han.R to work with environment variable
+	_R_CHECK_LENGTH_1_CONDITION_ set to true
+	* Removed JapanPrefecturesMap()
+2017-11-29 Susumu Tanimura <aruminat@gmail.com>
+	* Added kansu2arabic(), kansu2arabic.Rd, and Nippon-deprecated.Rd
+	* Made JapanPrefecturesMap() as deprecated
 2017-11-28 Susumu Tanimura <aruminat@gmail.com>
 	* version 0.6.5
 	* fixed NAMESPACE

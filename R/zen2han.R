@@ -1,5 +1,8 @@
+### Susumu Tanimura <aruminat@gmail.com>
+### Time-stamp: <2018-05-03 17:53:49 umusus>
+
 zen2han <- function(s){
-    if(Encoding(s) != "UTF-8")  s <- iconv(s, from = "", to = "UTF-8")
+    if(any(Encoding(s) != "UTF-8"))  s <- iconv(s, from = "", to = "UTF-8")
     s <- paste(s, sep='', collapse='')
     y <- sapply(unlist(strsplit(s, split = "")), function(x){
         i <- utf8ToInt(x)

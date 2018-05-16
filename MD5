@@ -1,5 +1,5 @@
-53f2401df589e6d36153f399ff48ffb2 *ChangeLog
-88c54925456a4d7d7c0cbe158b67a0f5 *DESCRIPTION
+f6113265ff2490a1c0e99c26ed926ece *ChangeLog
+ad3a87a7b88013e027062270cc94c461 *DESCRIPTION
 d1fa97397bc68761967a836f4b5211dc *NAMESPACE
 7903ea3dda184e5819eb82b09678977d *R/jholiday.R
 f46813afab026700b13c12f753900ec1 *R/jiscolor.R
@@ -12,6 +12,7 @@ b79c07292286490b4e119157007bf327 *R/romanization.R
 54f43705ec6bdc9c1c0b037df5620e9b *R/zen2han.R
 338f380d8a6e4a8cbb8be4e114c74add *R/zzz.R
 f016f47247f8400d9cdd470cd79f918b *TODO
+4e57278d8178db1913f264998ec4172f *build/partial.rdb
 d17f80657e287b61db6ba2df990c5545 *cleanup
 327b4541392ece6de8649e22f05dd765 *cleanup.win
 94f7b4a684f19ab22948827a2c602316 *configure
@@ -29,7 +30,7 @@ a7e6a7af5ce4e4cf28069f42289030fc *inst/po/ja/LC_MESSAGES/R-Nippon.mo
 e1e3c1a8f072fdd0a320a2e368386d54 *man/JapaneseColors.Rd
 d5b03bd71e7b1efa29e24d8b5945e80c *man/Nippon-deprecated.Rd
 137f51586bcf5c7a0fd6633d72f5ee35 *man/Nippon-internal.Rd
-4ab616f5b5ec04862bbf03251c4d45c8 *man/Nippon-package.Rd
+eb7dc76cce7b1874f09c100eebb846d8 *man/Nippon-package.Rd
 3f26a208b96bff364ce889cd114d4234 *man/jholiday.Rd
 c2423bdee100e64868789d047a697518 *man/jyear.Rd
 0c86ef2e8e4c6ce0433b4a89f2a2a921 *man/kakasi.Rd

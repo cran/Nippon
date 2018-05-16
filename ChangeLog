@@ -1,3 +1,6 @@
+2018-05-16  Susumu Tanimura <aruminat@gmail.com>
+	* version 0.7.1
+	* Rewrote man/Nippon-package.Rd as suggested by Kurt Hornik 
 2018-05-03  Susumu Tanimura <aruminat@gmail.com>
 	* version 0.7
 	* Revised man/sanitizeZenkaku.Rd

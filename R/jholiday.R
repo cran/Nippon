@@ -72,15 +72,15 @@ jholiday <- function(year, holiday.names = TRUE){
   }else if(year >= 1988){
     d <- .fixedDate("05-04", "Citizens' Holiday")
   }
-  # The Coronation Day 
+  # Coronation Day
   # National Holiday
   if(year == 2019){
-    d <- .fixedDate("05-01", "The Coronation Day")
+    d <- .fixedDate("05-01", "Coronation Day")
     d <- .fixedDate("05-02", "National Holiday")
   }
   # Children's Day
   d <- .fixedDate("05-05", "Children's Day")
-  
+
   ## ====== June ==========
   if(year == 1993){
     d <- .fixedDate("06-09", "Marriage of Crown Prince Naruhito")
@@ -100,7 +100,7 @@ jholiday <- function(year, holiday.names = TRUE){
   if(year >= 2016){
     d <- .fixedDate("08-11", "Mountain Day")
   }
-  
+
   ## ====== September ==========
   # Autumnal Equinox Day
   aed <- as.Date(paste(year, "09", .Shubun(year), sep = "-"))
@@ -128,7 +128,7 @@ jholiday <- function(year, holiday.names = TRUE){
   if(year == 2019){
     d <- .fixedDate("10-22", "Official Enthronement Ceremony of Emperor Naruhito")
   }
-  
+
   ## ====== November ==========
   # Culture Day
   d <- .fixedDate("11-03", "Culture Day")
@@ -189,7 +189,7 @@ is.jholiday <- function(dates){
   x <- d[w]
   return(x[ordinal])
 }
-  
+
 ## Calculation formulas in .Shunbun() and .Shubun() were referred to
 ## Shinkoyomi-benricho, Ephemeris Computation Workshop eds, Koseisha
 ## Koseikaku: Tokyo, 1991, ISBN: 9784769907008.

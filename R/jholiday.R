@@ -1,3 +1,4 @@
+## 稲盛さんのclone
 ### Susumu Tanimura <aruminat@gmail.com>
 ### Time-stamp: <2015-06-24 17:16:11 umusus>
 ### This code was inspired by and refferrd to VBA macro at
@@ -11,7 +12,7 @@ jholiday <- function(year, holiday.names = TRUE){
   ## We need strings of weekdays for a different locale.
   ## Starts with Sunday
   wdayStrings <- weekdays(seq(as.Date("2013/2/17"), by = "days", length = 7))
-
+  
   .fixedDate <- function(x, name){
     h <- as.Date(paste(year, x, sep = "-"))
     if(holiday.names) names(h) <- name
@@ -33,7 +34,7 @@ jholiday <- function(year, holiday.names = TRUE){
   }else{
     d <- .fixedDate("01-15", "Coming of Age Day")
   }
-
+  
   ## ====== February ==========
   # Foundation Day
   if(year >= 1967){
@@ -41,12 +42,17 @@ jholiday <- function(year, holiday.names = TRUE){
   }else if(year == 1989){
     d <- .fixedDate("02-24", "State Funeral of the Showa Emperor")
   }
-
+  
+  # The Reiwa Emperor's Birthday
+  if(2020 <= year){
+    d <- .fixedDate("02-23", "The Emperor's Birthday")
+  }
+  
   ## ====== March ==========
   # Vernal Equinox Day
   d <- .unfixedDate(as.Date(paste(year, "03", .Shunbun(year), sep = "-")),
                     "Vernal Equinox Day")
-
+  
   ## ====== April ==========
   # Showa Day
   if(year >= 2007){
@@ -80,27 +86,36 @@ jholiday <- function(year, holiday.names = TRUE){
   }
   # Children's Day
   d <- .fixedDate("05-05", "Children's Day")
-
+  
   ## ====== June ==========
   if(year == 1993){
     d <- .fixedDate("06-09", "Marriage of Crown Prince Naruhito")
   }
-
+  
   ## ====== July ==========
   # Marine Day
-  if(year >= 2003){
+  if(year == 2020){
+    d <- .fixedDate("07-23", "Marine Day")
+  } else if(year >= 2003){
     d <- .unfixedDate(.findDateByWeekday(year, 7, wdayStrings[2], 3),
                       "Marine Day")
-  } else if(year >= 1996){
+  } else if(year >= 1996 && year <= 2002){
     d <- .fixedDate("07-20", "Marine Day")
   }
-
+  
+  # Health and Sports Day
+  if(year == 2020){
+    d <- .fixedDate("07-24", "Health and Sports Day")
+  }
+  
   ## ====== August ==========
   # Mountain Day
-  if(year >= 2016){
+  if(year == 2020){
+    d <- .fixedDate("08-10", "Mountain Day")
+  } else if(year >= 2016){
     d <- .fixedDate("08-11", "Mountain Day")
   }
-
+  
   ## ====== September ==========
   # Autumnal Equinox Day
   aed <- as.Date(paste(year, "09", .Shubun(year), sep = "-"))
@@ -115,20 +130,20 @@ jholiday <- function(year, holiday.names = TRUE){
   }else if(year >= 1966){
     d <- .fixedDate("09-15", "Respect-for-the-Aged Day")
   }
-
+  
   ## ====== October ==========
   # Health and Sports Day
-  if(year >= 2000){
+  if(year >= 2000 && year != 2020){
     d <- .unfixedDate(.findDateByWeekday(year, 10, wdayStrings[2], 2),
                       "Health and Sports Day")
-  }else if(year > 1966){
+  }else if(year > 1966 && year != 2020){
     d <- .fixedDate("10-10", "Health and Sports Day")
   }
   # Official Enthronement Ceremony of Emperor Akihito
   if(year == 2019){
     d <- .fixedDate("10-22", "Official Enthronement Ceremony of Emperor Naruhito")
   }
-
+  
   ## ====== November ==========
   # Culture Day
   d <- .fixedDate("11-03", "Culture Day")
@@ -138,13 +153,13 @@ jholiday <- function(year, holiday.names = TRUE){
   if(year == 1990){
     d <- .fixedDate("11-12", "Official Enthronement Ceremony of Emperor Akihito")
   }
-
+  
   ## ====== December ==========
   # The Heisei Emperor's Birthday
   if(2018 >= year && year >= 1989){
     d <- .fixedDate("12-23", "The Emperor's Birthday")
   }
-
+  
   ## ====== Others ==========
   # Transfer Holiday
   sun <- weekdays(d) == wdayStrings[1]
